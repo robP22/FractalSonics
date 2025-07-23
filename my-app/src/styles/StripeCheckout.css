@@ -1,0 +1,108 @@
+/* Stripe Checkout Component Styles */
+.stripe-checkout-form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.customer-info-section,
+.payment-section {
+  margin-bottom: 30px;
+}
+
+.customer-info-section h3,
+.payment-section h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.customer-info-section h4 {
+  margin: 20px 0 10px 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-input:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.card-element-container {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.card-element-container:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.stripe-pay-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+}
+
+.stripe-pay-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stripe-pay-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.stripe-pay-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .stripe-checkout-form {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
