@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './CartContext';
 import { SearchProvider } from '../contexts/SearchContext';
 import { ServiceProvider } from '../contexts/ServiceContext';
@@ -10,15 +10,21 @@ import CartPage from './CartPage';
 import Support from './Support';
 import Account from './Account';
 import Navigation from './Navigation';
+import '../styles/shared-utilities.css';
 import '../styles/App.css';
 import '../styles/accessibility.css';
 
 function AppContent() {
+  const location = useLocation();
+  const isCartPage = location.pathname === '/cart';
+  
   return (
-    <div className="fractal-sonics-app-main-container">
+    <div className={`fractal-sonics-app-main-container ${isCartPage ? 'cart-page' : ''}`}>
       <div className="fractal-sonics-welcome-banner-fullwidth">
-        <h1 className="fractal-sonics-welcome-banner-title">Welcome to Fractal Sonics</h1>
-        <p className="fractal-sonics-welcome-banner-subtitle">The go-to site for unique sounds!</p>
+        <h1 className="fractal-sonics-welcome-banner-title" data-text="Fractal Sonics">
+          Fractal Sonics
+        </h1>
+        <p className="fractal-sonics-welcome-banner-subtitle">The premier marketplace for unique sounds!</p>
       </div>
 
       <Navigation />

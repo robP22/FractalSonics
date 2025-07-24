@@ -20,13 +20,17 @@ export default function Navigation() {
     return (
         <div className="fractal-sonics-main-navigation-bar">
             <div className="fractal-sonics-search-bar-container-left">
-                {showSearchBar && (
+                {location.pathname === '/cart' ? (
+                    <h1 className="fractal-sonics-cart-page-logo" data-text="Fractal Sonics">
+                        Fractal Sonics
+                    </h1>
+                ) : showSearchBar ? (
                     <SearchBar
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                         onSearch={handleSearch}
                     />
-                )}
+                ) : null}
             </div>
             
             <nav className="fractal-sonics-navigation-tiles-center-group">

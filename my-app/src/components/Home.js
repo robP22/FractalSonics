@@ -15,9 +15,22 @@ export default function Home() {
     
     const { products: newProducts, loading } = useProducts(
         true, 
-        5, 
+        7, 
         onError
     );
+
+    // Get trending products (random selection from all products)
+    const { products: allProducts, loading: trendingLoading } = useProducts(
+        false, 
+        0, 
+        onError
+    );
+    
+    // Select random products for trending (different from new products)
+    const trendingProducts = allProducts
+        .filter(product => !newProducts.some(newProduct => newProduct.id === product.id))
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 6);
 
 
 
@@ -39,6 +52,24 @@ export default function Home() {
                 ) : (
                     <div className="no-products-message">
                         No featured products available. Check if the Flask backend is running.
+                    </div>
+                )}
+            </section>
+
+            <section className="fractal-sonics-trending-products-section">
+                <h2 className="fractal-sonics-trending-products-section-title">Trending Products</h2>
+                
+                {trendingLoading ? (
+                    <LoadingSpinner message="Loading trending products..." />
+                ) : trendingProducts && trendingProducts.length > 0 ? (
+                    <div className="fractal-sonics-trending-products-horizontal-scroll">
+                        {trendingProducts.map(product => (
+                            <ProductCard key={`trending-${product.id}`} product={product} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="no-products-message">
+                        No trending products available.
                     </div>
                 )}
             </section>

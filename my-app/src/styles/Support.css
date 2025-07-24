@@ -31,9 +31,9 @@
 
 /* Contact Information Section */
 .contact-info {
-  background: #f8f9fa;
   padding: 30px;
   border-radius: 10px;
+  background: #f8f9fa;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -90,11 +90,11 @@
 
 /* Contact Form Section */
 .contact-form-container {
-  background: #fff;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form-container h2 {
@@ -133,9 +133,9 @@
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-family: inherit;
   font-size: 16px;
   transition: border-color 0.2s, box-shadow 0.2s;
-  font-family: inherit;
 }
 
 .form-input:focus,
@@ -156,16 +156,16 @@
 }
 
 .submit-button {
-  background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
-  color: white;
-  border: none;
+  margin-top: 10px;
   padding: 15px 30px;
+  border: none;
   border-radius: 5px;
+  background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
   font-size: 18px;
   font-weight: bold;
-  cursor: pointer;
+  color: white;
   transition: all 0.2s ease;
-  margin-top: 10px;
+  cursor: pointer;
 }
 
 .submit-button:hover:not(:disabled) {

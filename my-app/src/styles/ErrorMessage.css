@@ -1,11 +1,11 @@
 /* Message Component Styles */
 .message {
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border-radius: 4px;
     font-size: 14px;
     line-height: 1.4;
 }
@@ -15,15 +15,15 @@
 }
 
 .message-close-button {
-    background: none;
+    margin-left: 10px;
+    padding: 0 8px;
     border: none;
-    cursor: pointer;
+    border-radius: 2px;
+    background: none;
     font-size: 18px;
     font-weight: bold;
-    padding: 0 8px;
-    margin-left: 10px;
-    border-radius: 2px;
     transition: background-color 0.2s ease;
+    cursor: pointer;
 }
 
 .message-close-button:hover {

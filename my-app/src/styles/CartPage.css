@@ -1,8 +1,13 @@
 /* ===== CART PAGE LAYOUT ===== */
 .cart-page-container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
 }
 
 /* ===== CART CONTENT LAYOUT ===== */
@@ -10,28 +15,40 @@
   display: flex;
   gap: 30px;
   align-items: flex-start;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
 }
 
 .cart-items-section {
   flex: 2;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
 }
 
 .checkout-sidebar {
   flex: 1;
   min-width: 400px;
-  position: sticky;
-  top: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* ===== CART CONTAINER ===== */
 .cart-tile {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
   margin-bottom: 30px;
+  padding: 30px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .cart-tile h2 {
@@ -61,13 +78,41 @@
 .cart-item-list {
   padding: 0;
   margin: 0;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
+/* Apply custom scrollbar class in HTML: class="cart-item-list custom-scrollbar" */
+
+/* Scrollbar styling is now in shared-utilities.css */
 
 /* ===== RESPONSIVE CART SCALING ===== */
 /* Small cart (1-2 items) - Full size */
 .cart-item-list.cart-size-small .cart-item-tile {
   padding: 25px;
   margin-bottom: 25px;
+}
+
+/* ===== PRODUCT CARD RESPONSIVE SCALING ===== */
+/* Scale product cards based on cart size to maintain single page layout */
+.cart-size-small~* .fractal-sonics-product-card-container,
+.cart-size-small .fractal-sonics-product-card-container {
+  height: 420px;
+  max-width: 300px;
+  padding: 20px 20px 15px 20px;
+}
+
+.cart-size-small~* .fractal-sonics-product-image-frame,
+.cart-size-small .fractal-sonics-product-image-frame {
+  width: 250px;
+  height: 250px;
+}
+
+.cart-size-small~* .fractal-sonics-product-info-container,
+.cart-size-small .fractal-sonics-product-info-container {
+  width: 250px;
+  height: 105px;
 }
 
 .cart-item-list.cart-size-small .cart-image-frame {
@@ -89,6 +134,26 @@
   margin-bottom: 20px;
 }
 
+.cart-size-medium~* .fractal-sonics-product-card-container,
+.cart-size-medium .fractal-sonics-product-card-container {
+  height: 350px;
+  max-width: 280px;
+  margin: 15px;
+  padding: 15px 15px 12px 15px;
+}
+
+.cart-size-medium~* .fractal-sonics-product-image-frame,
+.cart-size-medium .fractal-sonics-product-image-frame {
+  width: 200px;
+  height: 200px;
+}
+
+.cart-size-medium~* .fractal-sonics-product-info-container,
+.cart-size-medium .fractal-sonics-product-info-container {
+  width: 200px;
+  height: 85px;
+}
+
 .cart-item-list.cart-size-medium .cart-image-frame {
   width: 150px;
   height: 112px;
@@ -108,17 +173,45 @@
   margin-bottom: 15px;
 }
 
+.cart-size-large~* .fractal-sonics-product-card-container,
+.cart-size-large .fractal-sonics-product-card-container {
+  height: 290px;
+  max-width: 250px;
+  margin: 10px;
+  padding: 12px 12px 10px 12px;
+}
+
+.cart-size-large~* .fractal-sonics-product-image-frame,
+.cart-size-large .fractal-sonics-product-image-frame {
+  width: 150px;
+  height: 150px;
+}
+
+.cart-size-large~* .fractal-sonics-product-info-container,
+.cart-size-large .fractal-sonics-product-info-container {
+  width: 150px;
+  height: 75px;
+}
+
+.cart-size-large~* .fractal-sonics-product-title-heading,
+.cart-size-large .fractal-sonics-product-title-heading {
+  font-size: 1.1em;
+}
+
+.cart-size-large~* .fractal-sonics-product-description-text,
+.cart-size-large .fractal-sonics-product-description-text {
+  font-size: 0.9em;
+  min-height: 2.4em;
+}
+
 .cart-item-list.cart-size-large .cart-item-title {
   font-size: 1rem;
   margin-bottom: 5px;
 }
 
 .cart-item-list.cart-size-large .cart-item-description {
+  /* Uses text-truncate-2 from shared-utilities.css */
   font-size: 0.9rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* Extra large cart (9+ items) - Very compact */
@@ -127,17 +220,59 @@
   margin-bottom: 12px;
 }
 
+.cart-size-xlarge~* .fractal-sonics-product-card-container,
+.cart-size-xlarge .fractal-sonics-product-card-container {
+  height: 250px;
+  max-width: 220px;
+  margin: 8px;
+  padding: 10px 10px 8px 10px;
+}
+
+.cart-size-xlarge~* .fractal-sonics-product-image-frame,
+.cart-size-xlarge .fractal-sonics-product-image-frame {
+  width: 120px;
+  height: 120px;
+}
+
+.cart-size-xlarge~* .fractal-sonics-product-info-container,
+.cart-size-xlarge .fractal-sonics-product-info-container {
+  width: 120px;
+  height: 65px;
+}
+
+.cart-size-xlarge~* .fractal-sonics-product-title-heading,
+.cart-size-xlarge .fractal-sonics-product-title-heading {
+  font-size: 1em;
+  margin-bottom: 2px;
+}
+
+.cart-size-xlarge~* .fractal-sonics-product-description-text,
+.cart-size-xlarge .fractal-sonics-product-description-text {
+  font-size: 0.85em;
+  min-height: 2.2em;
+  margin: 1px 0 4px 0;
+}
+
+.cart-size-xlarge~* .fractal-sonics-product-category-text,
+.cart-size-xlarge .fractal-sonics-product-category-text {
+  font-size: 0.85em;
+  margin: 1px 0 4px 0;
+}
+
+.cart-size-xlarge~* .fractal-sonics-add-to-cart-button,
+.cart-size-xlarge .fractal-sonics-add-to-cart-button {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
 .cart-item-list.cart-size-xlarge .cart-item-title {
   font-size: 0.95rem;
   margin-bottom: 3px;
 }
 
 .cart-item-list.cart-size-xlarge .cart-item-description {
+  /* Uses text-truncate-1 from shared-utilities.css */
   font-size: 0.85rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .cart-item-list.cart-size-xlarge .cart-item-right {
@@ -160,12 +295,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
   margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
 }
 
@@ -242,7 +377,8 @@
 .cart-summary {
   border-top: 2px solid #eee;
   padding-top: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
+  flex-shrink: 0;
 }
 
 .total-section {
@@ -311,6 +447,10 @@
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .checkout-section h2 {
@@ -354,31 +494,11 @@
   color: #333;
 }
 
-/* Message styles */
-.message {
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.message.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.message.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
+/* Message styles are now in shared-utilities.css */
 .message.removal-message {
-  background-color: #fff3cd;
-  color: #856404;
-  border: 1px solid #ffeaa7;
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-border);
 }
 
 /* Responsive design */
@@ -390,7 +510,13 @@
 
   .checkout-sidebar {
     min-width: auto;
-    position: static;
+    flex: none;
+    height: auto;
+  }
+
+  .cart-items-section {
+    flex: 1;
+    min-height: 0;
   }
 }
 

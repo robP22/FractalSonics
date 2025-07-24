@@ -1,3 +1,20 @@
+/* Custom Font Imports */
+@font-face {
+  font-family: 'Freeday';
+  src: url('./fonts/freeday/FREEDAY.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blackcraft';
+  src: url('./fonts/blackcraft/Blackcraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Global styles */
 * {
   margin: 0;
@@ -14,6 +31,23 @@ html {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('./navbar-texture.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  opacity: 1;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ===== MAIN APP CONTAINER ===== */
@@ -23,27 +57,239 @@ html {
   padding: 0;
 }
 
+/* ===== CART PAGE VIEWPORT CONSTRAINT ===== */
+.cart-page .fractal-sonics-app-main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 /* ===== TOP WELCOME BANNER ===== */
 .fractal-sonics-welcome-banner-fullwidth {
   text-align: center;
-  background: linear-gradient(135deg, hsl(0, 0%, 0%) 0%, #764ba2 100%);
+  background:
+    url('./navbar-texture.png'),
+    linear-gradient(135deg, hsl(0, 0%, 0%) 0%, #764ba2 100%);
+  background-blend-mode: overlay;
+  background-size: cover, cover;
+  background-position: center, center;
   color: white;
-  padding: 40px 20px;
+  padding: 40px 20px 60px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
+  position: relative;
+  overflow: hidden;
 }
 
+/* ===== CART PAGE BANNER OVERRIDE ===== */
+.cart-page .fractal-sonics-welcome-banner-fullwidth {
+  padding: none; /* Reduced bottom padding */
+  margin-top: 0px; /* Move banner up to align with browser URL bar */
+  margin-bottom: 0px; /* Minimal overlap for seamless connection */
+  position: static;
+  width: 100%;
+  margin-left: 0;
+  z-index: 1;
+}
+
+.cart-page .fractal-sonics-welcome-banner-title {
+  display: none;
+}
+
+.cart-page .fractal-sonics-welcome-banner-subtitle {
+  display: none;
+}
+
+.fractal-sonics-welcome-banner-fullwidth::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+
+
 .fractal-sonics-welcome-banner-title {
-  margin: 0 0 10px 0;
-  font-size: 2.5rem;
-  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 15.0rem;
+  font-weight: normal;
+  font-family: 'Freeday', 'Blackcraft', 'Courier New', 'Monaco', 'Menlo', monospace;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  z-index: 2;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.4),
+    0 0 25px rgba(118, 75, 162, 1.0),
+    0 0 35px rgba(118, 75, 162, 0.8),
+    4px 4px 0px rgba(0, 0, 0, 1.0),
+    -2px -2px 0px rgba(255, 255, 255, 0.1);
+  animation: glitch 2s infinite;
+  filter: drop-shadow(0 0 15px rgba(118, 75, 162, 0.7));
+}
+
+@keyframes glitch {
+
+  /* Rest for 1s (0% to 50%) */
+  0%,
+  50% {
+    transform: translate(0);
+  }
+
+  /* Glitch burst for 0.5s (50% to 75%) */
+  52% {
+    transform: translate(-1px, 1px);
+  }
+
+  56% {
+    transform: translate(-1px, -1px);
+  }
+
+  60% {
+    transform: translate(1px, 1px);
+  }
+
+  64% {
+    transform: translate(1px, -1px);
+  }
+
+  68% {
+    transform: translate(-1px, 1px);
+  }
+
+  72% {
+    transform: translate(1px, -1px);
+  }
+
+  /* Back to rest (75% to 100%) */
+  75%,
+  100% {
+    transform: translate(0);
+  }
+}
+
+.fractal-sonics-welcome-banner-title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #ff0080;
+  z-index: -1;
+  animation: glitch-1 2s infinite;
+}
+
+.fractal-sonics-welcome-banner-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #00ff80;
+  z-index: -2;
+  animation: glitch-2 2s infinite;
+}
+
+@keyframes glitch-1 {
+
+  /* Rest for 1s (0% to 50%) */
+  0%,
+  50% {
+    transform: translate(0);
+  }
+
+  /* Glitch burst for 0.5s (50% to 75%) */
+  52% {
+    transform: translate(-2px, 2px);
+  }
+
+  56% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  64% {
+    transform: translate(2px, -2px);
+  }
+
+  68% {
+    transform: translate(-2px, 2px);
+  }
+
+  72% {
+    transform: translate(2px, -2px);
+  }
+
+  /* Back to rest (75% to 100%) */
+  75%,
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-2 {
+
+  0%,
+  100% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(2px, -2px);
+  }
+
+  40% {
+    transform: translate(2px, 2px);
+  }
+
+  60% {
+    transform: translate(-2px, -2px);
+  }
+
+  80% {
+    transform: translate(-2px, 2px);
+  }
 }
 
 .fractal-sonics-welcome-banner-subtitle {
-  margin: 0;
-  font-size: 1.2rem;
-  opacity: 0.9;
+  margin-bottom: 10px;
+  margin-top: -90px;
+  font-size: 1.5rem;
+  opacity: 1.00;
+  position: relative;
+  z-index: 2;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 8px rgba(118, 75, 162, 0.3);
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* ===== MAIN NAVIGATION BAR ===== */
@@ -52,11 +298,42 @@ html {
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  padding: 2%;
-  background: linear-gradient(135deg, #764ba2 0%,  #000000 100%);
-  border-top: 2px solid #000000;
-  margin-bottom: 20px;
+  padding: 20px;
+  background: transparent;
+  margin-bottom: 10px;
+  margin-top: -65px;
   position: relative;
+  z-index: 10;
+}
+
+/* ===== CART PAGE NAVIGATION ADJUSTMENTS ===== */
+.cart-page .fractal-sonics-main-navigation-bar {
+  margin-top: 0px;
+  padding: 60px 20px 60px 20px;
+  position: static;
+  background: 
+    url('./navbar-texture.png'),
+    linear-gradient(135deg, hsl(0, 0%, 0%) 0%, #764ba2 100%);
+  background-blend-mode: overlay;
+  background-size: cover, cover;
+  background-position: center, center;
+  border-radius: 0;
+}
+
+/* Add gradient overlay for cart page navbar */
+.cart-page .fractal-sonics-main-navigation-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .fractal-sonics-search-bar-container-left {
@@ -65,6 +342,129 @@ html {
   height: 36px;
   display: flex;
   align-items: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* ===== CART PAGE LOGO ON LEFT ===== */
+.cart-page .fractal-sonics-search-bar-container-left {
+  justify-content: flex-start;
+}
+
+.fractal-sonics-cart-page-logo {
+  font-size: 3rem;
+  font-weight: normal;
+  font-family: 'Freeday', 'Blackcraft', 'Courier New', 'Monaco', 'Menlo', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.4),
+    0 0 12px rgba(118, 75, 162, 1.0),
+    0 0 18px rgba(118, 75, 162, 0.8),
+    2px 2px 0px rgba(0, 0, 0, 1.0),
+    -1px -1px 0px rgba(255, 255, 255, 0.1);
+  animation: glitch-navbar 2s infinite;
+  filter: drop-shadow(0 0 8px rgba(118, 75, 162, 0.7));
+}
+
+.fractal-sonics-cart-page-logo::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #ff0080;
+  z-index: -1;
+  animation: glitch-navbar-1 2s infinite;
+}
+
+.fractal-sonics-cart-page-logo::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #00ff80;
+  z-index: -2;
+  animation: glitch-navbar-2 2s infinite;
+}
+
+@keyframes glitch-navbar {
+  0%, 50% {
+    transform: translate(0);
+  }
+  52% {
+    transform: translate(-0.5px, 0.5px);
+  }
+  56% {
+    transform: translate(-0.5px, -0.5px);
+  }
+  60% {
+    transform: translate(0.5px, 0.5px);
+  }
+  64% {
+    transform: translate(0.5px, -0.5px);
+  }
+  68% {
+    transform: translate(-0.5px, 0.5px);
+  }
+  72% {
+    transform: translate(0.5px, -0.5px);
+  }
+  75%, 100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-navbar-1 {
+  0%, 50% {
+    transform: translate(0);
+  }
+  52% {
+    transform: translate(-1px, 1px);
+  }
+  56% {
+    transform: translate(-1px, -1px);
+  }
+  60% {
+    transform: translate(1px, 1px);
+  }
+  64% {
+    transform: translate(1px, -1px);
+  }
+  68% {
+    transform: translate(-1px, 1px);
+  }
+  72% {
+    transform: translate(1px, -1px);
+  }
+  75%, 100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-navbar-2 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(1px, -1px);
+  }
+  40% {
+    transform: translate(1px, 1px);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    transform: translate(-1px, 1px);
+  }
 }
 
 /* ===== NAVIGATION TILES CENTER ===== */
@@ -76,39 +476,42 @@ html {
   display: flex;
   gap: 0px;
   align-items: stretch;
+  z-index: 1;
 }
 
 .fractal-sonics-navigation-tile-button {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   width: 80px;
-  height: 36px;
-  background-color: #ffffff;
-  color: #333333;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  height: 40px;
   margin: 2px;
   padding: 0;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
   box-sizing: border-box;
-  flex-shrink: 0;
+  background-color: var(--color-background-white);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.fractal-sonics-navigation-tile-button:hover {
+  background-color: var(--color-background-light);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .fractal-sonics-navigation-tile-button-active {
   background-color: #000000cc;
   color: #ffffff;
   border-color: #000000;
-}
-
-.fractal-sonics-navigation-tile-button:not(.fractal-sonics-navigation-tile-button-active):hover {
-  background-color: #f8f9fa;
-  border-color: #007bff;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
-  transform: translateY(-1px);
 }
 
 /* ===== CART AND ACCOUNT ICONS RIGHT ===== */
@@ -120,6 +523,8 @@ html {
   gap: 10px;
   width: 274px;
   height: 36px;
+  z-index: 1;
+  position: relative;
 }
 
 .fractal-sonics-cart-icon-link,
@@ -130,18 +535,27 @@ html {
 
 .fractal-sonics-cart-icon-button,
 .fractal-sonics-account-icon-button {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  background-color: #ffffff;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-background-white);
   font-size: 24px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.fractal-sonics-cart-icon-button:hover,
+.fractal-sonics-account-icon-button:hover {
+  background-color: var(--color-background-light);
+  border-color: var(--color-border-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .auth-indicator-dot {
@@ -154,14 +568,6 @@ html {
   border-radius: 50%;
   border: 2px solid white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
-}
-
-.fractal-sonics-cart-icon-button:hover,
-.fractal-sonics-account-icon-button:hover {
-  background-color: #f8f9fa;
-  border-color: #007bff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .fractal-sonics-cart-item-count-badge {
@@ -181,39 +587,4 @@ html {
   border: 2px solid white;
 }
 
-/* Legacy React styles (can be removed if not needed) */
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Legacy React styles removed - not used in this application */
