@@ -15,6 +15,14 @@ export default function SearchBar({ searchTerm, setSearchTerm, onSearch }) {
         }
     };
 
+    const handleClear = () => {
+        setInputValue('');
+        setSearchTerm('');
+        if (onSearch) {
+            onSearch('');
+        }
+    };
+
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             handleSearch();
@@ -22,29 +30,42 @@ export default function SearchBar({ searchTerm, setSearchTerm, onSearch }) {
     };
 
     return (
-        <div className="fractal-sonics-search-bar-container">
+        <div className="search-bar-container">
             <label htmlFor="product-search" className="sr-only">
                 Search products
             </label>
-            <input
-                id="product-search"
-                name="search"
-                type="text"
-                placeholder="Search products..."
-                value={inputValue}
-                onChange={handleChange}
-                onKeyPress={handleKeyPress}
-                className="fractal-sonics-search-input-field"
-                autoComplete="search"
-                aria-label="Search products"
-            />
             <button 
                 onClick={handleSearch}
-                className="fractal-sonics-search-submit-button"
+                className="search-submit-button"
                 aria-label="Submit search"
+                type="button"
             >
                 Search
             </button>
+            <div className="search-input-wrapper">
+                <input
+                    id="product-search"
+                    name="search"
+                    type="text"
+                    placeholder="Search products..."
+                    value={inputValue}
+                    onChange={handleChange}
+                    onKeyPress={handleKeyPress}
+                    className="search-input-field"
+                    autoComplete="search"
+                    aria-label="Search products"
+                />
+                {inputValue && (
+                    <button 
+                        onClick={handleClear}
+                        className="search-clear-button"
+                        aria-label="Clear search"
+                        type="button"
+                    >
+                        ×
+                    </button>
+                )}
+            </div>
         </div>
     );
 }

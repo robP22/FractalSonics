@@ -4,11 +4,13 @@ import { useCart } from './CartContext';
 import { useSearch } from '../contexts/SearchContext';
 import SearchBar from './SearchBar';
 import { navigationItems, shouldShowSearch } from '../config/navigation';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Navigation() {
     const location = useLocation();
     const { cart } = useCart();
     const { searchTerm, setSearchTerm, handleSearch } = useSearch();
+    const { isAuthenticated } = useAuth();
     
     const showSearchBar = shouldShowSearch(location.pathname);
     const mainNavItems = navigationItems.filter(item => 
@@ -43,8 +45,13 @@ export default function Navigation() {
             
             <div className="fractal-sonics-user-icons-container-right">
                 <Link to="/account" className="fractal-sonics-account-icon-link">
-                    <div className="fractal-sonics-account-icon-button">
+                    <div className={`fractal-sonics-account-icon-button ${
+                        isAuthenticated ? 'logged-in' : ''
+                    }`}>
                         👤
+                        {isAuthenticated && (
+                            <span className='auth-indicator-dot'></span>
+                        )}
                     </div>
                 </Link>
                 <Link to="/cart" className="fractal-sonics-cart-icon-link">

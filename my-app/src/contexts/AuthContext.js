@@ -1,112 +1,134 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Step 1: Create the context
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
-// Step 2: Create the provider component
 export function AuthProvider({ children }) {
-    // Step 3: Define state variables
-    const [user, setUser] = useState(null);           // null = not logged in, object = user data
-    const [loading, setLoading] = useState(true);     // true while checking if user is logged in
-    const [error, setError] = useState('');           // stores auth error messages
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Step 4: Check authentication status when app loads
     useEffect(() => {
         checkAuthStatus();
     }, []);
 
-    // Step 5: Function to check if user is already logged in (from session)
     const checkAuthStatus = async () => {
+        setLoading(true);
+
         try {
-            const response = await fetch('http://localhost:5000/api/user/profile', {
-                credentials: 'include' // This sends session cookies to backend
-            });
-            
-            if (response.ok) {
-                const data = await response.json();
-                if (data.success) {
-                    setUser(data.user); // User is logged in, store their data
-                }
+            const response = await fetch('http://localhost:5000/api/user/profile');
+            const data = await response.json();
+
+            if (data.success) {
+                setUser(data.user);
+            } 
+            else {
+                setUser(null);
             }
-            // If response is not ok, user is not logged in (which is fine)
-        } catch (err) {
+        }
+        catch (err) {
             console.error('Auth check failed:', err);
-            // Network error, but don't show error to user - just assume not logged in
-        } finally {
-            setLoading(false); // Done checking, show the app
+            setUser(null);
+        }
+        finally {
+            setLoading(false);
         }
     };
 
-    // Step 6: Login function
     const login = async (email, password) => {
+        setError(null);
+
         try {
-            setError(''); // Clear any previous errors
-            
             const response = await fetch('http://localhost:5000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: 'include', // Include session cookies
                 body: JSON.stringify({ email, password }),
             });
 
             const data = await response.json();
-            
+
             if (data.success) {
-                setUser(data.user); // Store user data in state
+                setUser(data.user);
                 return { success: true };
-            } else {
-                setError(data.message); // Show error from backend
+            }
+            else {
+                setError(data.message);
                 return { success: false, message: data.message };
             }
-        } catch (err) {
-            const errorMsg = 'Login failed. Please check your connection and try again.';
-            setError(errorMsg);
-            return { success: false, message: errorMsg };
+        }
+        catch (err) {
+            setError('Login failed. Please try again.');
+            return { success: false, message: 'Login failed. Please try again.'}
         }
     };
 
-    // Step 7: Logout function
     const logout = async () => {
+        setError(null);
+
         try {
-            // Tell backend to clear the session
-            await fetch('http://localhost:5000/api/logout', {
+            const response = await fetch('http://localhost:5000/api/logout', {
                 method: 'POST',
-                credentials: 'include',
             });
-        } catch (err) {
+        }
+        catch (err) {
             console.error('Logout request failed:', err);
-            // Even if backend call fails, we'll clear local state
-        } finally {
-            setUser(null);  // Clear user data
-            setError('');   // Clear any errors
+        }
+        finally {
+            setUser(null);
+            setError(null);
         }
     };
 
-    // Step 8: Create the value object that components will access
-    const value = {
-        user,                           // Current user data (null if not logged in)
-        loading,                        // Is auth check in progress?
-        error,                          // Current error message
-        login,                          // Function to log in
-        logout,                         // Function to log out
-        isAuthenticated: !!user,        // Boolean: is user logged in?
-        clearError: () => setError('')  // Function to clear error messages
+    const register = async (email, password, firstName, lastName) => {
+        setError(null);
+
+        try {
+            const response = await fetch('http://localhost:5000/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password, first_name: firstName, last_name: lastName }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                return await login(email, password);
+            }
+            else {
+                setError(data.message);
+                return { success: false, message: data.message };
+            }
+        }
+        catch (err) {
+            setError('Registration failed. Please try again.');
+            return { success: false, message: 'Registration failed. Please try again.'}
+        }
     };
 
-    // Step 9: Provide the context to child components
+    const value = {
+        user,
+        loading,
+        error,
+        login,
+        logout,
+        register,
+        isAuthenticated: !!user,
+        clearError: () => setError(null)
+    };
+
     return (
         <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
-    );
+    )
 }
 
-// Step 10: Custom hook to use the auth context
 export const useAuth = () => {
     const context = useContext(AuthContext);
-    if (!context) {
+    if(!context) {
         throw new Error('useAuth must be used within AuthProvider');
     }
     return context;

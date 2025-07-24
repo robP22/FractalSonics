@@ -1,32 +1,17 @@
 import React from 'react';
+import '../styles/ErrorMessage.css';
 
-export default function ErrorMessage({ message, onClose }) {
+export default function ErrorMessage({ message, onClose, type = 'error' }) {
     if (!message) return null;
 
     return (
-        <div className="error-message" style={{
-            color: 'red', 
-            padding: '10px', 
-            marginBottom: '20px',
-            backgroundColor: '#fee',
-            border: '1px solid #fcc',
-            borderRadius: '4px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-        }}>
-            <span>{message}</span>
+        <div className={`message ${type}`}>
+            <span className="message-text">{message}</span>
             {onClose && (
                 <button 
                     onClick={onClose}
-                    style={{
-                        background: 'none',
-                        border: 'none',
-                        color: 'red',
-                        cursor: 'pointer',
-                        fontSize: '16px',
-                        padding: '0 5px'
-                    }}
+                    className="message-close-button"
+                    aria-label="Close message"
                 >
                     ×
                 </button>

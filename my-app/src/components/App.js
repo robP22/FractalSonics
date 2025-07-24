@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './CartContext';
 import { SearchProvider } from '../contexts/SearchContext';
 import { ServiceProvider } from '../contexts/ServiceContext';
+import { AuthProvider } from '../contexts/AuthContext';
 import Home from './Home';
 import Products from './Products';
 import CartPage from './CartPage';
@@ -35,15 +36,17 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <ServiceProvider>
-        <CartProvider>
-          <SearchProvider>
-            <AppContent />
-          </SearchProvider>
-        </CartProvider>
-      </ServiceProvider>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <ServiceProvider>
+          <CartProvider>
+            <SearchProvider>
+              <AppContent />
+            </SearchProvider>
+          </CartProvider>
+        </ServiceProvider>
+      </Router>
+    </AuthProvider>
   );
 }
 

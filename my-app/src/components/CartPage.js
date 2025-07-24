@@ -16,6 +16,17 @@ export default function CartPage() {
   const [removalMessage, setRemovalMessage] = useState('');
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  
+  // Determine cart size class for responsive scaling
+  const getCartSizeClass = () => {
+    const itemCount = cart.length;
+    if (itemCount <= 2) return 'cart-size-small';
+    if (itemCount <= 5) return 'cart-size-medium';
+    if (itemCount <= 8) return 'cart-size-large';
+    return 'cart-size-xlarge';
+  };
+  
+  const shouldShowImages = cart.length <= 5;
 
   const handleCheckoutSuccess = (successMessage) => {
     setMessage(successMessage);
@@ -67,13 +78,15 @@ export default function CartPage() {
         <div className='cart-items-section'>
           <div className='cart-tile'>
             <h2>Your Cart</h2>
-            <ul className='cart-item-list'>
+            <ul className={`cart-item-list ${getCartSizeClass()}`}>
               {cart.map(item => (
                 <li key={item.id} className='cart-item-tile'>
                   <div className='cart-item-left'>
-                    <p>{item.title}</p>
-                    <img src={item.image_url} alt={item.title} className='cart-image-frame' />
-                    <p>{item.description}</p>
+                    <p className="cart-item-title">{item.title}</p>
+                    {shouldShowImages && (
+                      <img src={item.image_url} alt={item.title} className='cart-image-frame' />
+                    )}
+                    <p className="cart-item-description">{item.description}</p>
                   </div>
                   <div className='cart-item-right'>
                     <label htmlFor={`quantity-${item.id}`}>Qty.</label>

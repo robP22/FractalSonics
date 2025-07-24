@@ -61,8 +61,10 @@ html {
 
 .fractal-sonics-search-bar-container-left {
   flex: 0 0 auto;
-  width: 274px;
+  width: 300px;
   height: 36px;
+  display: flex;
+  align-items: center;
 }
 
 /* ===== NAVIGATION TILES CENTER ===== */
@@ -91,6 +93,7 @@ html {
   margin: 2px;
   padding: 0;
   border: 1px solid #e0e0e0;
+  border-radius: 4px;
   box-sizing: border-box;
   flex-shrink: 0;
 }
@@ -98,12 +101,14 @@ html {
 .fractal-sonics-navigation-tile-button-active {
   background-color: #000000cc;
   color: #ffffff;
+  border-color: #000000;
 }
 
 .fractal-sonics-navigation-tile-button:not(.fractal-sonics-navigation-tile-button-active):hover {
   background-color: #f8f9fa;
-  border-color: #000000;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transform: translateY(-1px);
 }
 
 /* ===== CART AND ACCOUNT ICONS RIGHT ===== */
@@ -137,6 +142,18 @@ html {
   font-size: 24px;
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-indicator-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .fractal-sonics-cart-icon-button:hover,

@@ -63,6 +63,98 @@
   margin: 0;
 }
 
+/* ===== RESPONSIVE CART SCALING ===== */
+/* Small cart (1-2 items) - Full size */
+.cart-item-list.cart-size-small .cart-item-tile {
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.cart-item-list.cart-size-small .cart-image-frame {
+  width: 200px;
+  height: 150px;
+}
+
+.cart-item-list.cart-size-small .cart-item-title {
+  font-size: 1.2rem;
+}
+
+.cart-item-list.cart-size-small .cart-item-description {
+  font-size: 1rem;
+}
+
+/* Medium cart (3-5 items) - Slightly smaller */
+.cart-item-list.cart-size-medium .cart-item-tile {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-item-list.cart-size-medium .cart-image-frame {
+  width: 150px;
+  height: 112px;
+}
+
+.cart-item-list.cart-size-medium .cart-item-title {
+  font-size: 1.1rem;
+}
+
+.cart-item-list.cart-size-medium .cart-item-description {
+  font-size: 0.95rem;
+}
+
+/* Large cart (6-8 items) - Compact, no images */
+.cart-item-list.cart-size-large .cart-item-tile {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.cart-item-list.cart-size-large .cart-item-title {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.cart-item-list.cart-size-large .cart-item-description {
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Extra large cart (9+ items) - Very compact */
+.cart-item-list.cart-size-xlarge .cart-item-tile {
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.cart-item-list.cart-size-xlarge .cart-item-title {
+  font-size: 0.95rem;
+  margin-bottom: 3px;
+}
+
+.cart-item-list.cart-size-xlarge .cart-item-description {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cart-item-list.cart-size-xlarge .cart-item-right {
+  min-width: 100px;
+  gap: 8px;
+}
+
+.cart-item-list.cart-size-xlarge .cart-item-right input {
+  width: 50px;
+  padding: 3px;
+}
+
+.cart-item-list.cart-size-xlarge .remove-from-cart-btn {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
 /* ===== INDIVIDUAL CART ITEM ===== */
 .cart-item-tile {
   display: flex;
@@ -102,9 +194,16 @@
   word-break: break-word;
 }
 
-.cart-item-left p:first-child {
+.cart-item-title {
   font-weight: bold;
   font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.cart-item-description {
+  color: #666;
+  line-height: 1.4;
   margin-bottom: 10px;
 }
 
