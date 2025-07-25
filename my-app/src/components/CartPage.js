@@ -79,42 +79,45 @@ export default function CartPage() {
           <div className='cart-tile'>
             <h2>Your Cart</h2>
             <ul className={`cart-item-list ${getCartSizeClass()}`}>
-              {cart.map(item => (
-                <li key={item.id} className='cart-item-tile'>
-                  <div className='cart-item-left'>
-                    <p className="cart-item-title">{item.title}</p>
-                    {shouldShowImages && (
-                      <img src={item.image_url} alt={item.title} className='cart-image-frame' />
-                    )}
-                    <p className="cart-item-description">{item.description}</p>
-                  </div>
-                  <div className='cart-item-right'>
-                    <label htmlFor={`quantity-${item.id}`}>Qty.</label>
-                    <input
-                      id={`quantity-${item.id}`}
-                      name={`quantity-${item.id}`}
-                      type="number"
-                      min="0"
-                      value={item.quantity}
-                      onChange={e => {
-                        const qty = Number(e.target.value);
-                        if (qty <= 0) {
-                          setRemovalMessage(`${item.title} has been removed from your cart`);
-                          removeFromCart(item.id);
-                          // Clear removal message after 3 seconds
-                          setTimeout(() => setRemovalMessage(''), 3000);
-                        } else {
-                          updateQuantity(item.id, qty);
-                        }
-                      }}
-                      autoComplete="off"
-                      aria-label={`Quantity for ${item.title}`}
-                    />
-                    <p>{formatter.format(item.price * item.quantity)}</p>
-                    <button onClick={() => removeFromCart(item.id)} className='remove-from-cart-btn'>Remove</button>
-                  </div>
-                </li>
-              ))}
+              {cart.map(item => {
+                console.log('Cart item id:', item.id, 'Type:', typeof item.id);
+                return (
+                  <li key={item.id} className='cart-item-tile'>
+                    <div className='cart-item-left'>
+                      <p className="cart-item-title">{item.title}</p>
+                      {shouldShowImages && (
+                        <img src={item.image_url} alt={item.title} className='cart-image-frame' />
+                      )}
+                      <p className="cart-item-description">{item.description}</p>
+                    </div>
+                    <div className='cart-item-right'>
+                      <label htmlFor={`quantity-${item.id}`}>Qty.</label>
+                      <input
+                        id={`quantity-${item.id}`}
+                        name={`quantity-${item.id}`}
+                        type="number"
+                        min="0"
+                        value={item.quantity}
+                        onChange={e => {
+                          const qty = Number(e.target.value);
+                          if (qty <= 0) {
+                            setRemovalMessage(`${item.title} has been removed from your cart`);
+                            removeFromCart(item.id);
+                            // Clear removal message after 3 seconds
+                            setTimeout(() => setRemovalMessage(''), 3000);
+                          } else {
+                            updateQuantity(item.id, qty);
+                          }
+                        }}
+                        autoComplete="off"
+                        aria-label={`Quantity for ${item.title}`}
+                      />
+                      <p>{formatter.format(item.price * item.quantity)}</p>
+                      <button onClick={() => removeFromCart(item.id)} className='remove-from-cart-btn'>Remove</button>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="clear-cart-section">

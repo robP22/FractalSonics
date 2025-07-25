@@ -18,8 +18,10 @@ export function CartProvider({ children }) {
 
   // Add item to cart (increase quantity if exists)
   const addToCart = (item) => {
+    console.log('Adding to cart:', item);
     setCart(prev => {
       const existing = prev.find(i => i.id === item.id);
+      console.log('Existing in cart:', existing);
       return existing
         ? prev.map(i => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i)
         : [...prev, { ...item, quantity: 1 }];
@@ -48,3 +50,22 @@ export function CartProvider({ children }) {
 
 // use cart context in components
 export const useCart = () => useContext(CartContext);
+
+export function getCartItemCount(cart) {
+  return cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+// Example component using the cart context
+function CartIcon() {
+  const { cart } = useCart();
+  return (
+    <div className="cart-icon">
+      {/* Other cart icon elements */}
+      {getCartItemCount(cart) > 0 && (
+        <span className="fractal-sonics-cart-item-count-badge">
+          {getCartItemCount(cart)}
+        </span>
+      )}
+    </div>
+  );
+}

@@ -22,7 +22,7 @@ export default function Products() {
     );
 
     return (
-        <div>
+        <div className="fractal-sonics-products-page-container">
             <ErrorMessage message={error} onClose={clearError} />
             
             {loading ? (
@@ -34,7 +34,7 @@ export default function Products() {
                             <ProductCard key={product.id} product={product} />
                         ))
                     ) : (
-                        <div className="no-products-message">
+                        <div className="fractal-sonics-no-products-message">
                             {searchTerm ? `No products found for "${searchTerm}"` : 'No products available'}
                         </div>
                     )}

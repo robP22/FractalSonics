@@ -36,6 +36,8 @@ html {
   background-attachment: fixed;
   background-repeat: repeat;
   opacity: 1;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -59,10 +61,9 @@ body::before {
 
 /* ===== CART PAGE VIEWPORT CONSTRAINT ===== */
 .cart-page .fractal-sonics-app-main-container {
-  height: 100vh;
+  /* Removed height: 100vh and overflow: hidden to allow natural page scrolling */
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 /* ===== TOP WELCOME BANNER ===== */
@@ -75,7 +76,7 @@ body::before {
   background-size: cover, cover;
   background-position: center, center;
   color: white;
-  padding: 40px 20px 60px 20px;
+  padding: 20px 20px 60px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -85,21 +86,15 @@ body::before {
 
 /* ===== CART PAGE BANNER OVERRIDE ===== */
 .cart-page .fractal-sonics-welcome-banner-fullwidth {
-  padding: none; /* Reduced bottom padding */
-  margin-top: 0px; /* Move banner up to align with browser URL bar */
-  margin-bottom: 0px; /* Minimal overlap for seamless connection */
-  position: static;
-  width: 100%;
-  margin-left: 0;
-  z-index: 1;
+    display: none !important;
 }
 
 .cart-page .fractal-sonics-welcome-banner-title {
-  display: none;
+  display: none !important;
 }
 
 .cart-page .fractal-sonics-welcome-banner-subtitle {
-  display: none;
+  display: none !important;
 }
 
 .fractal-sonics-welcome-banner-fullwidth::before {
@@ -268,7 +263,7 @@ body::before {
 
 .fractal-sonics-welcome-banner-subtitle {
   margin-bottom: 10px;
-  margin-top: -90px;
+  margin-top: -50px;
   font-size: 1.5rem;
   opacity: 1.00;
   position: relative;
@@ -309,7 +304,7 @@ body::before {
 /* ===== CART PAGE NAVIGATION ADJUSTMENTS ===== */
 .cart-page .fractal-sonics-main-navigation-bar {
   margin-top: 0px;
-  padding: 60px 20px 60px 20px;
+  padding: 20px;
   position: static;
   background: 
     url('./navbar-texture.png'),
@@ -318,6 +313,7 @@ body::before {
   background-size: cover, cover;
   background-position: center, center;
   border-radius: 0;
+  overflow: hidden;
 }
 
 /* Add gradient overlay for cart page navbar */
@@ -480,25 +476,27 @@ body::before {
 }
 
 .fractal-sonics-navigation-tile-button {
+  position: relative;
   display: flex;
-  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 80px;
+  width: 90px;
   height: 40px;
-  margin: 2px;
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
   padding: 0;
+  margin: 2px;
   border: 2px solid var(--color-border);
   border-radius: var(--border-radius-md);
-  box-sizing: border-box;
   background-color: var(--color-background-white);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  text-decoration: none;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition-fast);
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
 }
 
 .fractal-sonics-navigation-tile-button:hover {

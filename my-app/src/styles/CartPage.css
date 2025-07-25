@@ -100,7 +100,7 @@
 .cart-size-small .fractal-sonics-product-card-container {
   height: 420px;
   max-width: 300px;
-  padding: 20px 20px 15px 20px;
+  padding: 6px;
 }
 
 .cart-size-small~* .fractal-sonics-product-image-frame,
@@ -139,7 +139,7 @@
   height: 350px;
   max-width: 280px;
   margin: 15px;
-  padding: 15px 15px 12px 15px;
+  padding: 6px;
 }
 
 .cart-size-medium~* .fractal-sonics-product-image-frame,
@@ -178,7 +178,7 @@
   height: 290px;
   max-width: 250px;
   margin: 10px;
-  padding: 12px 12px 10px 12px;
+  padding: 6px;
 }
 
 .cart-size-large~* .fractal-sonics-product-image-frame,
@@ -225,7 +225,7 @@
   height: 250px;
   max-width: 220px;
   margin: 8px;
-  padding: 10px 10px 8px 10px;
+  padding: 6px;
 }
 
 .cart-size-xlarge~* .fractal-sonics-product-image-frame,

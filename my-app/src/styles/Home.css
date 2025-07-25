@@ -2,12 +2,11 @@
 
 /* ===== HOME PAGE MAIN CONTAINER ===== */
 .fractal-sonics-home-page-container {
-  padding: 20px;
+  padding: 15px 10px;
 }
 
 /* ===== NEW PRODUCTS SHOWCASE SECTION ===== */
 .fractal-sonics-new-products-section {
-  /* Uses section-container from shared-utilities.css */
   text-align: left;
 }
 
@@ -16,46 +15,43 @@
   margin-bottom: 20px;
   color: #333;
   text-align: center;
+  /* Enhanced visibility with glow effect */
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(118, 75, 162, 0.6),
+    0 0 30px rgba(118, 75, 162, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
 }
 
 .fractal-sonics-new-products-horizontal-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 10px 0;
-  scroll-behavior: smooth;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 1rem 0;
 }
 
-/* Scrollbar styling is now in shared-utilities.css - use custom-scrollbar class */
-
-/* ===== TRENDING PRODUCTS SHOWCASE SECTION ===== */
-.fractal-sonics-trending-products-section {
-  /* Uses section-container from shared-utilities.css */
-  text-align: left;
+/* ===== RESPONSIVE ADJUSTMENTS FOR HOME GRID ===== */
+@media (max-width: 768px) {
+  .fractal-sonics-new-products-horizontal-scroll {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
-.fractal-sonics-trending-products-section-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
-  text-align: center;
+@media (max-width: 480px) {
+  .fractal-sonics-new-products-horizontal-scroll {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
 }
 
-.fractal-sonics-trending-products-horizontal-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 10px 0;
-  scroll-behavior: smooth;
+/* ===== PRODUCT CARD OVERRIDE FOR HOME LAYOUT ===== */
+.fractal-sonics-new-products-horizontal-scroll .fractal-sonics-product-card-container {
+  margin: 0; /* Ensure no conflicting margins */
 }
 
-/* Scrollbar styling is now in shared-utilities.css - use custom-scrollbar class */
-
-/* ===== PRODUCT CARD OVERRIDE FOR HORIZONTAL LAYOUT ===== */
-.fractal-sonics-new-products-horizontal-scroll .fractal-sonics-product-card-container,
-.fractal-sonics-trending-products-horizontal-scroll .fractal-sonics-product-card-container {
-  flex: 0 0 300px;
-  margin: 0;
-}
-
-/* Message and loading styles are now in shared-utilities.css */

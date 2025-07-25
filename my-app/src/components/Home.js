@@ -2,9 +2,21 @@ import React, { useCallback } from "react";
 import ProductCard from './ProductCard';
 import { useProducts } from '../hooks/useProducts';
 import { useErrorHandler } from '../hooks/useErrorHandler';
+import { usePurchaseHistory } from '../hooks/usePurchaseHistory';
 import ErrorMessage from './ErrorMessage';
 import LoadingSpinner from './LoadingSpinner';
 import '../styles/Home.css';
+
+function getTrendingProductIds(purchaseHistory, topN) {
+  const counts = {};
+  purchaseHistory.forEach(ph => {
+    counts[ph.product_id] = (counts[ph.product_id] || 0) + Number(ph.quantity);
+  });
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topN)
+    .map(([id]) => id);
+}
 
 export default function Home() {
     const { error, handleError, clearError } = useErrorHandler();
@@ -26,53 +38,38 @@ export default function Home() {
         onError
     );
     
-    // Select random products for trending (different from new products)
-    const trendingProducts = allProducts
-        .filter(product => !newProducts.some(newProduct => newProduct.id === product.id))
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 6);
+    const { purchaseHistory } = usePurchaseHistory();
+    // After loading products and purchaseHistory
+    const trendingProductIds = purchaseHistory && purchaseHistory.length > 0
+      ? getTrendingProductIds(purchaseHistory, 5).map(String)
+      : allProducts.slice(0, 5).map(p => String(p.id));
 
+    const topTrendingProducts = allProducts
+      .filter(product => trendingProductIds.includes(String(product.id)))
+      .map(product => ({
+        ...product,
+        trending: purchaseHistory && purchaseHistory.length > 0
+          ? trendingProductIds.includes(String(product.id))
+          : false
+      }));
 
+    console.log('allProducts:', allProducts);
+    console.log('purchaseHistory:', purchaseHistory);
 
     return (
-        <div className="fractal-sonics-home-page-container">
-            <ErrorMessage message={error} onClose={clearError} />
-            
-            <section className="fractal-sonics-new-products-section">
-                <h2 className="fractal-sonics-new-products-section-title">New Products</h2>
-                
-                {loading ? (
-                    <LoadingSpinner message="Loading featured products..." />
-                ) : newProducts && newProducts.length > 0 ? (
-                    <div className="fractal-sonics-new-products-horizontal-scroll">
-                        {newProducts.map(product => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="no-products-message">
-                        No featured products available. Check if the Flask backend is running.
-                    </div>
-                )}
-            </section>
-
-            <section className="fractal-sonics-trending-products-section">
-                <h2 className="fractal-sonics-trending-products-section-title">Trending Products</h2>
-                
-                {trendingLoading ? (
-                    <LoadingSpinner message="Loading trending products..." />
-                ) : trendingProducts && trendingProducts.length > 0 ? (
-                    <div className="fractal-sonics-trending-products-horizontal-scroll">
-                        {trendingProducts.map(product => (
-                            <ProductCard key={`trending-${product.id}`} product={product} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="no-products-message">
-                        No trending products available.
-                    </div>
-                )}
-            </section>
-        </div>
+      <div className="fractal-sonics-home-page-container">
+        <ErrorMessage message={error} onClose={clearError} />
+        <section className="fractal-sonics-new-products-section">
+          {loading || trendingLoading || !purchaseHistory ? (
+            <LoadingSpinner message="Loading products..." />
+          ) : (
+            <div className="fractal-sonics-new-products-horizontal-scroll">
+              {topTrendingProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
     );
 }

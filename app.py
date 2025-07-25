@@ -84,5 +84,15 @@ def checkout():
     return jsonify({"success": True, "message": "Order placed!"})
 
 
+@app.route('/api/purchase-history', methods=['GET'])
+def get_purchase_history():
+    history = []
+    with open('userPurchaseHistory.csv', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            history.append(row)
+    return jsonify(history)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

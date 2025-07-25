@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useCart } from './CartContext';
+import { useCart, getCartItemCount } from './CartContext';
 import { useSearch } from '../contexts/SearchContext';
 import SearchBar from './SearchBar';
 import { navigationItems, shouldShowSearch } from '../config/navigation';
@@ -61,8 +61,10 @@ export default function Navigation() {
                 <Link to="/cart" className="fractal-sonics-cart-icon-link">
                     <div className="fractal-sonics-cart-icon-button">
                         🛒
-                        {cart.length > 0 && (
-                            <span className="fractal-sonics-cart-item-count-badge">{cart.length}</span>
+                        {getCartItemCount(cart) > 0 && (
+                            <span className="fractal-sonics-cart-item-count-badge">
+                                {getCartItemCount(cart)}
+                            </span>
                         )}
                     </div>
                 </Link>

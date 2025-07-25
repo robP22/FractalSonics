@@ -1,45 +1,109 @@
 /* ===== FRACTAL SONICS PRODUCTS PAGE STYLES ===== */
 
-/* ===== PRODUCT GRID LAYOUT ===== */
-.fractal-sonics-products-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
+/* ===== PRODUCTS PAGE MAIN CONTAINER ===== */
+.fractal-sonics-products-page-container {
+  padding: 15px 10px;
 }
 
-/* ===== RESPONSIVE GRID FOR CART SCALING ===== */
+/* ===== PRODUCT GRID LAYOUT (matches Home.css approach) ===== */
+.fractal-sonics-products-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 1rem 0;
+  margin: 0 auto;
+  max-width: 2600px; /* Prevent overly wide layouts */
+}
+
+/* ===== RESPONSIVE GRID ADJUSTMENTS ===== */
+/* Force 5 columns on MacBook Pro 13" (1440x900) and larger screens */
+@media (min-width: 1440px) {
+  .fractal-sonics-products-grid-container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 1rem 8px;
+  }
+}
+
+/* 4 columns for medium desktop */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .fractal-sonics-products-grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 1rem 12px;
+  }
+}
+
+/* 3 columns for small desktop */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .fractal-sonics-products-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    padding: 1rem 10px;
+  }
+}
+
+/* 2 columns for tablet */
+@media (min-width: 600px) and (max-width: 899px) {
+  .fractal-sonics-products-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0.5rem 10px;
+  }
+}
+
+/* 1 column for mobile */
+@media (max-width: 599px) {
+  .fractal-sonics-products-grid-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem 10px;
+  }
+}
+
+/* ===== CART SIZE OVERRIDES (when cart is open) ===== */
 .cart-size-medium ~ * .fractal-sonics-products-grid-container,
 .cart-size-medium .fractal-sonics-products-grid-container {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1rem !important;
 }
 
 .cart-size-large ~ * .fractal-sonics-products-grid-container,
 .cart-size-large .fractal-sonics-products-grid-container {
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.8rem !important;
 }
 
 .cart-size-xlarge ~ * .fractal-sonics-products-grid-container,
 .cart-size-xlarge .fractal-sonics-products-grid-container {
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.6rem !important;
+}
+
+/* ===== PRODUCT CARD LAYOUT (matches Home.css) ===== */
+.fractal-sonics-products-grid-container .fractal-sonics-product-card-container {
+  margin: 0; /* Override any default margins */
 }
 
 /* ===== INDIVIDUAL PRODUCT CARD ===== */
 .fractal-sonics-product-card-container {
   width: 100%;
-  max-width: 300px;
-  height: 420px; /* Reduced height to minimize bottom spacing */
-  margin: 20px;
-  padding: 20px 20px 15px 20px; /* Reduced bottom padding */
+  max-width: 100%; /* Let grid control sizing */
+  margin: 0;
+  padding: 10px 5px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   box-sizing: border-box;
   background: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative; /* For trending banner positioning */
 }
 
 .fractal-sonics-product-card-container:hover {
@@ -49,35 +113,73 @@
   transform: translateY(-1px);
 }
 
-/* ===== PRODUCT IMAGE SECTION ===== */
+/* ===== TRENDING BANNER ===== */
+.fractal-sonics-trending-banner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff9800;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ===== PRODUCT IMAGE FRAME ===== */
 .fractal-sonics-product-image-frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: auto;
   margin: 0 auto 16px auto;
   border-radius: 8px;
   background: #f0f0f0;
-  overflow: hidden;
+  max-width: 96%;
+  max-height: 280px;
+}
+
+/* ===== RESPONSIVE IMAGE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+  .fractal-sonics-product-image-frame {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fractal-sonics-product-image-frame {
+    max-height: 200px;
+  }
 }
 
 .fractal-sonics-product-image-display {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
-/* ===== PRODUCT INFORMATION SECTION ===== */
+/* ===== PRODUCT INFORMATION CONTAINER ===== */
 .fractal-sonics-product-info-container {
   display: flex;
   flex-direction: column;
-  width: 250px;
-  height: 105px; /* Reduced height to minimize bottom spacing */
+  width: 100%;
   margin: 0 auto;
   text-align: left;
   word-break: break-word;
   line-height: 1.1;
+  max-width: 90%;
+}
+
+/* ===== MOBILE INFO ADJUSTMENTS ===== */
+@media (max-width: 480px) {
+  .fractal-sonics-product-info-container {
+    max-width: 100%;
+    padding: 0 5px;
+  }
 }
 
 .fractal-sonics-product-title-heading {
@@ -107,15 +209,20 @@
 }
 
 .fractal-sonics-product-info-container button {
-  margin-left: 10px;
+  margin-left: 0;
 }
 
 /* ===== PRICE AND CART SECTION ===== */
 .fractal-sonics-product-price-cart-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: auto; /* Push to bottom of container */
+  gap: 15px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 0;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .fractal-sonics-product-price-display {
@@ -126,33 +233,65 @@
   line-height: 1;
 }
 
-.fractal-sonics-add-to-cart-button {
+.fractal-sonics-add-to-cart-button,
+.fractal-sonics-checkout-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: 2px solid var(--color-border);
+  min-width: 140px;
+  height: 40px;
+  padding: 0 16px;
+  border: 2px solid #333333;
   border-radius: var(--border-radius-md);
   background-color: var(--color-background-white);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.5px;
   color: var(--color-text-primary);
   vertical-align: middle;
   transition: var(--transition-fast);
   cursor: pointer;
   box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
-.fractal-sonics-add-to-cart-button:hover {
+/* Add to Cart button specific sizing and margin */
+.fractal-sonics-add-to-cart-button {
+  min-width: 110px;
+  margin: 0;
+  margin-left: -5px;
+}
+
+.fractal-sonics-add-to-cart-button:hover,
+.fractal-sonics-checkout-btn:hover {
   background-color: var(--color-background-light);
-  border-color: var(--color-border-hover);
+  border-color: #1a1a1a;
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
+  letter-spacing: 0.75px;
+}
+
+/* Checkout button specific styling and margin */
+.fractal-sonics-checkout-btn {
+  background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
+  color: #fff;
+  border: 2px solid #333333;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  margin-right: 2px;
+}
+
+.fractal-sonics-checkout-btn:hover {
+  background: linear-gradient(135deg, #1a1a1a 0%, #8a5bb5 100%);
+  color: #fff;
+  border-color: #1a1a1a;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 /* ===== LOADING AND MESSAGE STATES ===== */
-.no-products-message {
+.fractal-sonics-no-products-message {
   padding: var(--spacing-4xl, 40px);
   font-size: 1.2rem;
   font-style: italic;
