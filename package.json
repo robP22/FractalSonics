@@ -1,6 +1,43 @@
 {
+  "name": "fractal-sonics",
+  "version": "1.0.0",
+  "description": "Modern e-commerce web application for unique sound products",
+  "main": "app.py",
+  "scripts": {
+    "start": "cd my-app && npm start",
+    "build": "cd my-app && npm run build",
+    "backend": "python app.py",
+    "install-frontend": "cd my-app && npm install",
+    "install-backend": "pip install -r requirements.txt",
+    "install-all": "npm run install-frontend && npm run install-backend",
+    "dev": "concurrently \"npm run backend\" \"npm run start\"",
+    "test": "cd my-app && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robP22/FractalSonics.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "flask",
+    "stripe",
+    "music",
+    "beats",
+    "sound-packs"
+  ],
+  "author": "robP22",
+  "license": "MIT",
   "dependencies": {
     "create-react-app": "^5.1.0",
     "react-router-dom": "^7.6.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0",
+    "python": ">=3.8.0"
   }
 }
