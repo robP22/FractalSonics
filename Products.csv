@@ -1,18 +1,18 @@
 id,title,description,category,price,tags,download_link,image_url
-1,"Arbitrary Starter & Loop Kit","Over 20 unique Starters, Loops, and Phrases",Trap,10.00,Trending,#placeholder-download,/Arbitrary Kit Art.png
-2,"robP Beat Pack","9 Unique beats ready for enjoyment",Trap,20.00,Recently Trending,#placeholder-download,/beatpack.png
-3,"Product 1","High-quality sound kit for music production",Hip Hop,15.00,New,#placeholder-download,/placeholder-image.png
-4,"Product 2","Professional drum samples and loops",R&B,12.50,Popular,#placeholder-download,/placeholder-image.png
-5,"Product 3","Melodic phrases and chord progressions",Pop,18.00,Trending,#placeholder-download,/placeholder-image.png
-6,"Product 4","Bass-heavy trap instrumentals",Trap,22.00,Hot,#placeholder-download,/placeholder-image.png
-7,"Product 5","Vintage soul samples collection",Soul,16.50,Classic,#placeholder-download,/placeholder-image.png
-8,"Product 6","Electronic dance music stems",EDM,25.00,New,#placeholder-download,/placeholder-image.png
-9,"Product 7","Jazz-influenced hip hop beats",Hip Hop,19.00,Trending,#placeholder-download,/placeholder-image.png
-10,"Product 8","Ambient soundscapes and textures",Ambient,14.00,Chill,#placeholder-download,/placeholder-image.png
-11,"Product 9","Reggaeton rhythm patterns",Reggaeton,17.50,Hot,#placeholder-download,/placeholder-image.png
-12,"Product 10","Lo-fi hip hop sample pack",Lo-Fi,13.00,Popular,#placeholder-download,/placeholder-image.png
-13,"Product 11","Orchestral cinematic sounds",Cinematic,30.00,Premium,#placeholder-download,/placeholder-image.png
-14,"Product 12","Afrobeat percussion loops",Afrobeat,21.00,New,#placeholder-download,/placeholder-image.png
-15,"Product 13","Synthwave retro collection",Synthwave,24.00,Retro,#placeholder-download,/placeholder-image.png
-16,"Product 14","Gospel organ and choir samples",Gospel,20.50,Soulful,#placeholder-download,/placeholder-image.png
-17,"Product 15","Drill beats and 808 patterns",Drill,16.00,Trending,#placeholder-download,/placeholder-image.png
+1,Arbitrary Starter & Loop Kit,"Over 20 unique Starters, Loops, and Phrases",Trap,10.00,Trending,#placeholder-download,/Arbitrary Kit Art.png
+2,robP Beat Pack,9 Unique beats ready for enjoyment,Trap,20.00,"Recently Trending, Trending",#placeholder-download,/beatpack.png
+3,Product 1,High-quality sound kit for music production,Hip Hop,15.00,"New, Trending",#placeholder-download,/placeholder-image.png
+4,Product 2,Professional drum samples and loops,R&B,12.50,"Popular, Trending",#placeholder-download,/placeholder-image.png
+5,Product 3,Melodic phrases and chord progressions,Pop,18.00,,#placeholder-download,/placeholder-image.png
+6,Product 4,Bass-heavy trap instrumentals,Trap,22.00,Hot,#placeholder-download,/placeholder-image.png
+7,Product 5,Vintage soul samples collection,Soul,16.50,Classic,#placeholder-download,/placeholder-image.png
+8,Product 6,Electronic dance music stems,EDM,25.00,New,#placeholder-download,/placeholder-image.png
+9,Product 7,Jazz-influenced hip hop beats,Hip Hop,19.00,,#placeholder-download,/placeholder-image.png
+10,Product 8,Ambient soundscapes and textures,Ambient,14.00,Chill,#placeholder-download,/placeholder-image.png
+11,Product 9,Reggaeton rhythm patterns,Reggaeton,17.50,"Hot, Trending",#placeholder-download,/placeholder-image.png
+12,Product 10,Lo-fi hip hop sample pack,Lo-Fi,13.00,Popular,#placeholder-download,/placeholder-image.png
+13,Product 11,Orchestral cinematic sounds,Cinematic,30.00,Premium,#placeholder-download,/placeholder-image.png
+14,Product 12,Afrobeat percussion loops,Afrobeat,21.00,New,#placeholder-download,/placeholder-image.png
+15,Product 13,Synthwave retro collection,Synthwave,24.00,Retro,#placeholder-download,/placeholder-image.png
+16,Product 14,Gospel organ and choir samples,Gospel,20.50,Soulful,#placeholder-download,/placeholder-image.png
+17,Product 15,Drill beats and 808 patterns,Drill,16.00,,#placeholder-download,/placeholder-image.png

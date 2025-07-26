@@ -15,7 +15,9 @@ export function AuthProvider({ children }) {
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/user/profile');
+            const response = await fetch('http://localhost:5000/api/user/profile', {
+                credentials: 'include'
+            });
             const data = await response.json();
 
             if (data.success) {
@@ -43,6 +45,7 @@ export function AuthProvider({ children }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: 'include',
                 body: JSON.stringify({ email, password }),
             });
 
@@ -67,8 +70,9 @@ export function AuthProvider({ children }) {
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:5000/api/logout', {
+            await fetch('http://localhost:5000/api/logout', {
                 method: 'POST',
+                credentials: 'include',
             });
         }
         catch (err) {
@@ -89,7 +93,8 @@ export function AuthProvider({ children }) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password, first_name: firstName, last_name: lastName }),
+                credentials: 'include',
+                body: JSON.stringify({ email, password, firstName, lastName }),
             });
 
             const data = await response.json();

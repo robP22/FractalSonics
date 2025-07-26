@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import { StripeCheckout } from '../ui';
 import '../../styles/CartPage.css';
@@ -9,6 +10,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 export default function CartPage() {
+  const location = useLocation();
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const [showCheckout, setShowCheckout] = useState(false);
   const [message, setMessage] = useState('');
@@ -16,6 +18,13 @@ export default function CartPage() {
   const [removalMessage, setRemovalMessage] = useState('');
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // Auto-open checkout if coming from rapid checkout button
+  useEffect(() => {
+    if (location.state?.autoCheckout && cart.length > 0) {
+      setShowCheckout(true);
+    }
+  }, [location.state, cart.length]);
   
   // Determine cart size class for responsive scaling
   const getCartSize = () => {
@@ -44,32 +53,13 @@ export default function CartPage() {
   };
 
   const startCheckout = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          cart_items: cart
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.error) {
-        onCheckoutError(data.error);
-        return;
-      }
-
-      // Redirect to Stripe checkout
-      window.location.href = data.url;
-      
-    } catch (error) {
-      console.error('Checkout error:', error);
-      onCheckoutError('Failed to start checkout. Please try again.');
+    if (cart.length === 0) {
+      onCheckoutError('Your cart is empty');
+      return;
     }
+    
+    // Show the checkout component instead of creating a session
+    setShowCheckout(true);
   };
 
   if (cart.length === 0) {

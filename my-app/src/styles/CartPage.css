@@ -260,7 +260,9 @@
 }
 
 .cart-size-xlarge~* .add-to-cart-btn,
-.cart-size-xlarge .add-to-cart-btn {
+.cart-size-xlarge~* .add-to-cart-btn-inline,
+.cart-size-xlarge .add-to-cart-btn,
+.cart-size-xlarge .add-to-cart-btn-inline {
   padding: 6px 12px;
   font-size: 12px;
 }

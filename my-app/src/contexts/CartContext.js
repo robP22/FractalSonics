@@ -54,18 +54,3 @@ export const useCart = () => useContext(CartContext);
 export function getCartItemCount(cart) {
   return cart.reduce((sum, item) => sum + item.quantity, 0);
 }
-
-// Example component using the cart context
-function CartIcon() {
-  const { cart } = useCart();
-  return (
-    <div className="cart-icon">
-      {/* Other cart icon elements */}
-      {getCartItemCount(cart) > 0 && (
-        <span className="fractal-sonics-cart-item-count-badge">
-          {getCartItemCount(cart)}
-        </span>
-      )}
-    </div>
-  );
-}

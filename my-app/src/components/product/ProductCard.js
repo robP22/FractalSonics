@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
 
     return (
         <div className="product-card">
-            {product.trending && (
+            {product.tags && product.tags.includes('Trending') && (
                 <div className="trending-badge">Trending</div>
             )}
             <div className="product-image">
@@ -22,19 +22,21 @@ export default function ProductCard({ product }) {
                 <p className="product-description text-truncate-2">{product.description}</p>
                 <p className="product-category">Category: {product.category}</p>
                 <div className="product-actions">
-                    <div className="product-buttons">
+                    <div className="product-price-section">
+                        <span className="product-price">${product.price}</span>
                         <button
                             onClick={() => addToCart(product)}
-                            className="add-to-cart-btn"
+                            className="add-to-cart-btn-inline"
                         >
                             Add to Cart
                         </button>
+                    </div>
+                    <div className="product-checkout-section">
                         <StripeCheckoutButton
                             product={product}
                             className="checkout-btn"
                         />
                     </div>
-                    <span className="product-price">${product.price}</span>
                 </div>
             </div>
         </div>

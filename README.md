@@ -1,68 +1,65 @@
-# Fractal Sonics 🎵
+# FractalSonics E-Commerce Platform 🎵
 
-A modern e-commerce web application for unique sound products, featuring a React frontend with Flask backend, integrated with Stripe for secure payments.
+A comprehensive full-stack e-commerce web application for unique sound products, featuring advanced user authentication, real-time payment processing, dynamic analytics, and professional UI/UX design.
 
-## 🚀 Features
+## 🚀 Advanced Features
 
-### 🛍️ E-commerce Functionality
-- **Product Catalog** - Browse and search through unique sound products with 5-column grid layout
-- **Shopping Cart** - Add, remove, and manage items with real-time updates and quantity tracking
-- **Secure Checkout** - Stripe integration with rapid checkout buttons on product cards
-- **Trending Products** - Data-driven trending products based on purchase history
-- **Responsive Design** - Optimized for all screen sizes with adaptive grid layouts
+### � User Authentication & Account Management
+- **Secure Registration** - Email validation, password requirements, duplicate prevention
+- **Session-Based Login** - Persistent authentication with secure session management
+- **User Profile Management** - Account information display and management
+- **Protected Routes** - Authentication-required endpoints with proper authorization
+- **Logout Functionality** - Complete session cleanup and security
 
-### 🎨 User Interface
-- **Luxury Design** - High-end styling with Segoe UI typography and gradient themes
-- **Enhanced Navigation** - Consistent 90x40px navigation buttons with hover effects
-- **Advanced Search** - Real-time product search with context-aware display (SearchBar component, searchTerm state, and product filtering)
-- **Visual Feedback** - Cart icon with item count badge and removal notifications
-- **Professional Banner** - Glitch-effect logo with optimized spacing (20px top, 60px bottom)
+### 💳 Advanced Payment Processing
+- **Stripe Payment Intents** - Real payment processing with Stripe's latest API
+- **Secure Checkout** - PCI-compliant payment forms with error handling
+- **Order Confirmation** - Payment verification and order tracking
+- **Purchase History** - Complete transaction history per user
+- **Receipt Generation** - Order confirmation with unique order IDs
 
-### 🛒 Shopping Experience
-- **Smart Cart Scaling** - Responsive cart adapts layout based on item count
-- **Cart & Checkout** - CartContext for global state, CartPage and CheckoutPage for UI, and `/api/checkout` endpoint for order processing
-- **Auto-removal** - Items automatically removed when quantity reaches zero
-- **Purchase History Integration** - Trending products calculated from actual purchase data
+### 📊 Dynamic Analytics & Trending Products
+- **Real-Time Trending** - Algorithm analyzes purchase data to identify top 5 products
+- **Automatic Updates** - Trending status updates after every purchase
+- **Purchase Analytics** - Comprehensive purchase tracking and statistics
+- **Data-Driven Insights** - Sales volume analysis and trending calculations
+- **Dynamic Content** - Products automatically tagged as "Trending" based on sales
+
+### 🛍️ Enhanced E-commerce Functionality
+- **Advanced Product Catalog** - Comprehensive product browsing with search
+- **Smart Shopping Cart** - Persistent cart with quantity management and auto-removal
 - **One-Click Checkout** - Stripe checkout buttons directly on product cards
-- **Image Consistency** - object-fit: cover ensures uniform product image display
+- **Responsive Design** - Optimized for all screen sizes with adaptive layouts
+- **Professional UI** - High-end styling with glitch effects and gradient themes
 
-### 📱 Responsive Design
-- **Adaptive Grid** - 1-5 columns based on screen size (5 columns on 1440px+)
-- **Cart Size Overrides** - Dynamic grid adjustment when cart is open
-- **Mobile-Optimized** - Touch-friendly interface with optimized spacing
-- **Dark Mode Scrollbars** - Custom scrollbar styling across all browsers
-
-### 🎯 Pages & Components
-- **Home Page** - Trending products showcase with purchase history integration
-- **Products Page** - Full catalog with responsive 5-column grid layout
-- **Cart Page** - Smart scaling cart with sidebar checkout
-- **Support Page** - Enhanced contact form with improved text visibility
-- **Account Management** - User authentication with visual indicators
+### � Professional User Interface
+- **Luxury Design** - High-end styling with custom fonts and gradient themes
+- **Glitch Effects** - Animated logo with pink/green text layers and precise positioning
+- **Responsive Navigation** - Consistent button sizing (90x40px) with hover effects
+- **Cart Page Optimization** - Custom navbar styling and perfect text alignment
+- **Visual Feedback** - Loading states, success messages, and error handling
 
 ## 🛠️ Technology Stack
 
-### Frontend
-- **React** - Modern JavaScript library with hooks and context API
-- **React Router** - Client-side routing for single-page application
-- **CSS3** - Professional styling with fractal-sonics-* naming convention
-- **CSS Grid** - Advanced responsive layouts with breakpoint-specific columns
-- **Custom Hooks** - useProducts, usePurchaseHistory, useErrorHandler
+### Frontend Technologies
+- **React 19.1.0** - Latest React with hooks, context API, and concurrent features
+- **React Router 7.6.3** - Advanced client-side routing with nested routes
+- **Stripe React SDK** - Official Stripe integration for secure payments
+- **CSS3 Grid & Flexbox** - Modern layout systems with responsive design
+- **Custom Fonts** - Freeday and Blackcraft for professional branding
 
-### Backend
-- **Flask** - Python web framework with CORS support
-- **CSV Data Store** - Products, user accounts, and purchase history
-- **Session Management** - User authentication and session handling
-- **REST API** - Products, purchase history, and user management endpoints
+### Backend Technologies
+- **Flask 3.0.0** - Modern Python web framework with CORS support
+- **Stripe API 8.5.0** - Latest Stripe server-side integration
+- **CSV Data Management** - Structured data storage for products, users, and purchases
+- **Session Management** - Secure user authentication and authorization
+- **python-dotenv** - Environment variable management for security
 
-### Payment Processing
-- **Stripe** - Secure payment processing with React Stripe.js
-- **@stripe/stripe-js** - Official Stripe JavaScript SDK
-- **@stripe/react-stripe-js** - React components for Stripe Elements
-
-### Development Tools
-- **ESLint** - Code quality and consistency
-- **Custom Fonts** - Freeday and Blackcraft for brand styling
-- **Dark Mode Support** - System-wide dark scrollbars and themes
+### Development & Deployment
+- **VS Code Integration** - Optimized development environment
+- **Git Version Control** - Professional source code management
+- **Environment Variables** - Secure API key and configuration management
+- **Modern JavaScript** - ES6+ features with async/await patterns
 
 ## 📁 Project Structure
 
@@ -79,25 +76,133 @@ FractalSonics/
 │   │   ├── components/              # React components
 │   │   │   ├── App.js               # Main application component
 │   │   │   ├── forms/               # Form components
-│   │   │   │   ├── AuthModal.js     # Authentication modal
-│   │   │   │   ├── LoginForm.js     # Login form
-│   │   │   │   ├── RegisterForm.js  # Registration form
+│   │   │   │   ├── AuthModal.js     # Authentication modal with login/register
+│   │   │   │   ├── LoginForm.js     # User login form
+│   │   │   │   ├── RegisterForm.js  # User registration form
 │   │   │   │   └── index.js         # Forms barrel file
 │   │   │   ├── layout/              # Layout components
-│   │   │   │   ├── Navigation.js    # Navigation bar
-│   │   │   │   ├── PageLayout.js    # Common page layout
+│   │   │   │   ├── Navigation.js    # Navigation bar with auth integration
+│   │   │   │   ├── PageLayout.js    # Common page layout wrapper
 │   │   │   │   └── index.js         # Layout barrel file
 │   │   │   ├── pages/               # Page components
-│   │   │   │   ├── Account.js       # User account page
-│   │   │   │   ├── CartPage.js      # Shopping cart page
-│   │   │   │   ├── CheckoutSuccess.js # Checkout success page
-│   │   │   │   ├── Home.js          # Homepage
-│   │   │   │   ├── Products.js      # Products listing page
-│   │   │   │   ├── Support.js       # Support page
+│   │   │   │   ├── Account.js       # User account management page
+│   │   │   │   ├── CartPage.js      # Shopping cart with custom styling
+│   │   │   │   ├── CheckoutSuccess.js # Payment success confirmation
+│   │   │   │   ├── Home.js          # Homepage with trending products
+│   │   │   │   ├── Products.js      # Products listing with search
+│   │   │   │   ├── Support.js       # Customer support page
 │   │   │   │   └── index.js         # Pages barrel file
 │   │   │   ├── product/             # Product components
-│   │   │   │   ├── ProductCard.js   # Individual product card
-│   │   │   │   ├── ProductGrid.js   # Product grid layout
+│   │   │   │   ├── ProductCard.js   # Individual product card with checkout
+│   │   │   │   ├── ProductGrid.js   # Responsive product grid layout
+│   │   │   │   └── index.js         # Product barrel file
+│   │   │   └── ui/                  # UI components
+│   │   │       ├── LoadingSpinner.js # Loading indicator
+│   │   │       ├── Message.js       # Success/error messages
+│   │   │       ├── SearchBar.js     # Product search functionality
+│   │   │       ├── StripeCheckout.js # Stripe payment form
+│   │   │       ├── StripeCheckoutButton.js # Quick checkout button
+│   │   │       └── index.js         # UI barrel file
+│   │   ├── contexts/                # React contexts for global state
+│   │   │   ├── AuthContext.js       # User authentication state
+│   │   │   ├── CartContext.js       # Shopping cart global state
+│   │   │   ├── SearchContext.js     # Search functionality state
+│   │   │   └── ServiceContext.js    # API services context
+│   │   ├── hooks/                   # Custom React hooks
+│   │   │   ├── useErrorHandler.js   # Centralized error handling
+│   │   │   ├── useOneClickCheckout.js # Quick checkout functionality
+│   │   │   ├── useProducts.js       # Products data management
+│   │   │   └── usePurchaseHistory.js # Purchase history management
+│   │   ├── config/                  # Application configuration
+│   │   │   ├── navigation.js        # Navigation routes configuration
+│   │   │   └── theme.js             # Theme and styling configuration
+│   │   ├── services/                # API services
+│   │   │   └── ProductService.js    # Product API integration
+│   │   ├── styles/                  # CSS stylesheets
+│   │   │   ├── App.css              # Main app styles with glitch effects
+│   │   │   ├── AuthModal.css        # Authentication modal styles
+│   │   │   ├── CartPage.css         # Cart page specific styles
+│   │   │   ├── Home.css             # Homepage styles
+│   │   │   ├── Products.css         # Products page styles
+│   │   │   ├── Support.css          # Support page styles
+│   │   │   ├── shared-utilities.css # Shared utility classes
+│   │   │   └── fonts/               # Custom brand fonts
+│   │   └── index.js                 # React app entry point
+├── .env                            # Environment variables (Stripe keys)
+├── app.py                          # Flask backend server with full API
+├── userService.py                  # User authentication service
+├── requirements.txt                # Python backend dependencies
+├── Products.csv                    # Product catalog with trending data
+├── userAccounts.csv                # User account storage
+├── userPurchaseHistory.csv         # Purchase transaction history
+├── DEPENDENCIES.md                 # Installation guide
+├── README.md                       # This documentation
+└── SETUP_GUIDE.md                  # Setup instructions
+
+## 🔐 Authentication System
+
+### User Registration Flow
+1. **Modal-Based Registration** - Clean, professional registration form
+2. **Email Validation** - Prevents duplicate accounts and validates format
+3. **Secure Password Storage** - Server-side password validation and storage
+4. **Automatic Login** - Seamless transition from registration to authenticated state
+5. **Error Handling** - Comprehensive validation with user-friendly messages
+
+### Login & Session Management
+1. **Session-Based Authentication** - Secure server-side session management
+2. **Persistent Login State** - User remains logged in across browser sessions
+3. **Profile Access** - User account information display and management
+4. **Secure Logout** - Complete session cleanup and security
+5. **Protected Routes** - Authentication-required endpoints with proper authorization
+
+## 💳 Advanced Payment System
+
+### Stripe Integration Architecture
+- **Payment Intents API** - Latest Stripe payment processing with enhanced security
+- **Real-Time Processing** - Immediate payment confirmation and order creation
+- **Error Handling** - Comprehensive payment error management and user feedback
+- **Order Tracking** - Unique order ID generation with payment intent integration
+- **Receipt System** - Payment confirmation with detailed transaction information
+
+### Payment Flow
+1. **Cart Review** - User reviews items and total before checkout
+2. **Customer Information** - Billing details collection with validation
+3. **Stripe Processing** - Secure payment processing with real-time status
+4. **Order Confirmation** - Payment verification and purchase history storage
+5. **Success Redirect** - User-friendly confirmation with order details
+
+## 📊 Analytics & Trending System
+
+### Dynamic Trending Algorithm
+```python
+def update_trending_products():
+    # Analyze all purchase history data
+    # Calculate top 5 most purchased products
+    # Update product catalog with trending tags
+    # Automatic execution after every purchase
+```
+
+### Data-Driven Features
+- **Purchase Analytics** - Real-time analysis of all user purchases
+- **Trending Calculation** - Top 5 products based on quantity sold
+- **Automatic Updates** - Trending status updates after every transaction
+- **Visual Indicators** - Trending badges on popular products
+- **Statistics API** - `/api/trending-stats` endpoint for analytics data
+
+## 🎨 Advanced UI/UX Features
+
+### Cart Page Styling Enhancements
+- **Custom Navbar** - Cart-specific navigation with gradient background
+- **Glitch Text Positioning** - Precisely aligned pink/green text effects
+- **Responsive Design** - Perfect alignment across all screen sizes
+- **Visual Polish** - Professional typography and spacing optimization
+
+### Interactive Elements
+- **Loading States** - Smooth loading indicators for all async operations
+- **Success Messages** - User feedback for successful actions
+- **Error Handling** - Graceful error display with recovery options
+- **Hover Effects** - Interactive button and card hover animations
+```
 │   │   │   │   └── index.js         # Product barrel file
 │   │   │   └── ui/                  # UI components
 │   │   │       ├── LoadingSpinner.js # Loading indicator
@@ -258,23 +363,78 @@ REACT_APP_API_URL=http://localhost:5000
 - **Dynamic Display**: Trending badges appear on popular products
 - **Fallback Logic**: Shows default products when no purchase history available
 
-## 🔧 API Integration
+## 🔧 API Documentation
 
-### Backend Endpoints
-- `GET /api/products` - Fetch all products with image URLs
-- `POST /api/checkout` - Order processing with customer data (cart and customer info)
-- (Other endpoints: `/api/purchase-history`, `/api/login`, `/api/register`)
+### Authentication Endpoints
+- **POST /api/register** - User registration with validation
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "securepassword",
+    "firstName": "John",
+    "lastName": "Doe"
+  }
+  ```
 
-### Data Structure
+- **POST /api/login** - User authentication with session creation
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "securepassword"
+  }
+  ```
+
+- **POST /api/logout** - Session termination and cleanup
+- **GET /api/user/profile** - Authenticated user profile information
+
+### E-commerce Endpoints
+- **GET /api/products** - Fetch all products with trending status
+- **POST /api/create-payment-intent** - Create Stripe payment intent
+- **POST /api/confirm-payment** - Verify payment and create order
+- **GET /api/purchase-history** - User-specific purchase history
+
+### Analytics Endpoints
+- **POST /api/update-trending** - Manually trigger trending calculation
+- **GET /api/trending-stats** - Get trending products statistics
+
+### Data Structures
+
+#### Product Data
 ```json
 {
-  "id": 1,
+  "id": "1",
   "title": "robP Beat Pack",
   "description": "High-quality beats and loops",
-  "price": 20.00,
+  "price": "20.00",
   "category": "Beat Packs",
-  "image_url": "/beatpack.png"
-  // ...other fields (tags, download_link, etc.)
+  "tags": "Hip-hop, Trending",
+  "image_url": "/beatpack.png",
+  "download_link": "https://example.com/download"
+}
+```
+
+#### User Account Data
+```json
+{
+  "user_id": "1",
+  "email": "user@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "registration_date": "2025-01-15"
+}
+```
+
+#### Purchase History Data
+```json
+{
+  "purchase_id": "1",
+  "user_id": "1",
+  "product_id": "1",
+  "product_title": "robP Beat Pack",
+  "price": "20.00",
+  "quantity": "1",
+  "purchase_date": "2025-01-15",
+  "order_status": "completed"
 }
 ```
 

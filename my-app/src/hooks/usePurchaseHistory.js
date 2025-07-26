@@ -6,7 +6,9 @@ export function usePurchaseHistory(onError) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/purchase-history')
+    fetch('http://localhost:5000/api/purchase-history', {
+      credentials: 'include'
+    })
       .then(res => res.json())
       .then(data => {
         setPurchaseHistory(data);

@@ -87,6 +87,11 @@ html {
   display: none !important;
 }
 
+/* Hide banner pseudo-element on cart page */
+.cart-page .fractal-sonics-welcome-banner-fullwidth::before {
+  display: none !important;
+}
+
 .fractal-sonics-welcome-banner-fullwidth::before {
   content: '';
   position: absolute;
@@ -166,7 +171,7 @@ html {
 .fractal-sonics-welcome-banner-title::before {
   content: attr(data-text);
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -178,7 +183,7 @@ html {
 .fractal-sonics-welcome-banner-title::after {
   content: attr(data-text);
   position: absolute;
-  top: 0;
+  top: 3px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -335,6 +340,8 @@ html {
 /* ===== CART PAGE LOGO ON LEFT ===== */
 .cart-page .nav-search {
   justify-content: flex-start;
+  height: auto;
+  align-items: stretch;
 }
 
 .cart-logo {
@@ -355,6 +362,9 @@ html {
     -1px -1px 0px rgba(255, 255, 255, 0.1);
   animation: glitch-navbar 2s infinite;
   filter: drop-shadow(0 0 8px rgba(118, 75, 162, 0.7));
+  display: flex;
+  align-items: center;
+  top: 13px;
 }
 
 .cart-logo::before {
@@ -389,27 +399,27 @@ html {
   }
 
   52% {
-    transform: translate(-0.5px, 0.5px);
+    transform: translate(-1px, 1px);
   }
 
   56% {
-    transform: translate(-0.5px, -0.5px);
+    transform: translate(-1px, -1px);
   }
 
   60% {
-    transform: translate(0.5px, 0.5px);
+    transform: translate(1px, 1px);
   }
 
   64% {
-    transform: translate(0.5px, -0.5px);
+    transform: translate(1px, -1px);
   }
 
   68% {
-    transform: translate(-0.5px, 0.5px);
+    transform: translate(-1px, 1px);
   }
 
   72% {
-    transform: translate(0.5px, -0.5px);
+    transform: translate(1px, -1px);
   }
 
   75%,

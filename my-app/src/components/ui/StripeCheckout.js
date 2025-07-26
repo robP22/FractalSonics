@@ -84,6 +84,7 @@ const CheckoutForm = ({ total, onSuccess, onError }) => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           amount: Math.round(total * 100), // Convert to cents
           currency: 'usd',
@@ -101,17 +102,62 @@ const CheckoutForm = ({ total, onSuccess, onError }) => {
         return;
       }
 
-      // Confirm payment
+      // Check if this is a demo payment (for development/testing)
+      const isDemoPayment = paymentIntent.client_secret && paymentIntent.client_secret.includes('pi_demo');
+      
+      if (isDemoPayment) {
+        // Simulate a successful demo payment
+        console.log('Demo payment detected, simulating success...');
+        setTimeout(() => {
+          clearCart();
+          onSuccess('Demo payment successful! Thank you for your test purchase.');
+          setProcessing(false);
+        }, 1000); // Add a small delay to simulate processing
+        return;
+      }
+
+      // Confirm payment with real Stripe
       const { error: confirmError } = await stripe.confirmCardPayment(
-        paymentIntent.client_secret
+        paymentIntent.client_secret,
+        {
+          payment_method: paymentMethod.id
+        }
       );
 
       if (confirmError) {
         onError(confirmError.message);
       } else {
-        // Payment succeeded
-        clearCart();
-        onSuccess('Payment successful! Thank you for your purchase.');
+        // Payment succeeded - now confirm with backend to save purchase history
+        try {
+          const confirmResponse = await fetch('http://localhost:5000/api/confirm-payment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+              payment_intent_id: paymentIntent.client_secret.split('_secret_')[0], // Extract payment intent ID
+              customer_info: customerInfo,
+              cart_items: cart,
+              amount: Math.round(total * 100) // Amount in cents
+            }),
+          });
+
+          const confirmResult = await confirmResponse.json();
+          
+          if (confirmResult.success) {
+            clearCart();
+            onSuccess(`Payment successful! Thank you for your purchase. Order ID: ${confirmResult.order_id}`);
+          } else {
+            // Payment went through Stripe but failed to save locally
+            clearCart();
+            onSuccess('Payment successful, but there was an issue saving your order. Please contact support.');
+          }
+        } catch (backendError) {
+          console.error('Error confirming payment with backend:', backendError);
+          clearCart();
+          onSuccess('Payment successful, but there was an issue saving your order. Please contact support.');
+        }
       }
     } catch (err) {
       console.error('Payment error:', err);
