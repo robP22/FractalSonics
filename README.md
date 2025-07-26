@@ -397,13 +397,6 @@ STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
 - **Dynamic Display**: Trending badges appear on popular products
 - **Fallback Logic**: Shows default products when no purchase history available
 
-## 🔗 Links & Resources
-
-- **Repository**: [GitHub - FractalSonics](https://github.com/robP22/FractalSonics)
-- **React Documentation**: [React.js](https://reactjs.org/docs)
-- **Flask Documentation**: [Flask](https://flask.palletsprojects.com/)
-- **Stripe Integration**: [Stripe React](https://stripe.com/docs/stripe-js/react)
-
 ## 📚 Additional Documentation
 
 ### Component Architecture
