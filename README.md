@@ -1,20 +1,58 @@
 # FractalSonics E-Commerce Platform 🎵
 
-A full-stack e-commerce web application prototype for digital sound products, developed as an academic project demonstrating modern web development practices with React, Flask, and Stripe integration.
+A full-stack e-commerce web application prototype for digital sound products, demonstrating modern web development practices with React, Flask, and Stripe integration.
+
+## 🔍 Current Implementation Details
+
+### Payment Flow
+1. **Product Selection** - Users browse and add items to cart
+2. **Cart Management** - Review items, adjust quantities, view totals with responsive visual scaling
+3. **Stripe Checkout** - Complete customer information collection and secure payment processing
+4. **Payment Verification** - Real Stripe Payment Intent confirmation and backend validation
+5. **Order Recording** - Purchase data automatically saved to CSV files with order confirmation
+6. **Account Integration** - Purchase history immediately available in user account dashboard
+
+### Data Storage & Management
+- **CSV Files** - File-based storage for development with proper data structure
+- **Product Catalog** - Static product data with pricing, descriptions, and trending status
+- **Purchase History** - Complete transaction logging with user association
+- **User Authentication** - Secure user account storage with password hashing
+- **Session Management** - Server-side session handling for authenticated users
+
+### Search and Navigation
+- **Real-time Product Search** - Live filtering by product name and description across catalog
+- **Responsive Navigation** - React Router with conditional search bar display based on page
+- **Cart Badge Integration** - Live cart item count display in navigation
+- **Multi-page Application** - Proper URL management and page routing
+
+### Authentication System
+- **User Registration** - Complete signup with email validation and password requirements
+- **Secure Login** - Session-based authentication with bcrypt password verification
+- **Account Dashboard** - Full user profile with purchase statistics and transaction history  
+- **Session Persistence** - Users remain logged in across browser sessions
+- **Protected Routes** - Authentication-required endpoints with proper authorization
 
 ## 🚀 Implemented Features
 
-### � Payment Processing
-- **Stripe Integration** - Secure payment processing using Stripe Payment Intents API
-- **Checkout Flow** - Complete checkout process with payment confirmation
-- **Order Tracking** - Purchase history recording in CSV files
-- **Error Handling** - Payment failure handling and user feedback
+### 💳 Payment Processing
+- **Full Stripe Integration** - Complete payment processing using Stripe Payment Intents API with real transaction handling
+- **Advanced Checkout Flow** - Customer information collection, billing address, payment confirmation
+- **Order Recording & Tracking** - Purchase history automatically saved and accessible via user accounts
+- **Comprehensive Error Handling** - Payment failure handling, user feedback, and recovery options
 
 ### 🛍️ Core E-commerce Functionality
-- **Product Catalog** - Display of digital sound products with search capability
-- **Shopping Cart** - Add/remove items with quantity management and localStorage persistence
+- **Product Catalog** - Dynamic product display with search capability and trending indicators
+- **Advanced Shopping Cart** - Add/remove items, quantity management, localStorage persistence, responsive visual scaling
 - **Responsive Design** - Mobile-first design with CSS Grid (1-5 columns based on screen size)
-- **Product Search** - Real-time search filtering across product catalog
+- **Real-time Product Search** - Live filtering across product catalog by title and description
+
+### 👤 Complete User Authentication & Account System
+- **Full User Registration System** - Email validation, password hashing with bcrypt, duplicate prevention
+- **Session-based Login** - Persistent authentication with secure session management
+- **Comprehensive Account Dashboard** - Purchase statistics, account information, complete purchase history
+- **Purchase History Management** - Detailed order history with transaction information and download access
+- **Account Navigation System** - Tab-based interface for overview, purchases, and settings sections
+- **Secure Authentication Flow** - Complete login/logout with proper session cleanup
 
 ### 🎨 User Interface
 - **React Router Navigation** - Multi-page application with conditional navigation elements
@@ -22,24 +60,25 @@ A full-stack e-commerce web application prototype for digital sound products, de
 - **Visual Feedback** - Loading states, success/error messages, and interactive elements
 - **Responsive Grid** - Adaptive product grid layout for different screen sizes
 
-### 📊 Basic Analytics
-- **Trending Products** - Simple algorithm to identify frequently purchased items
-- **Purchase Tracking** - CSV-based storage of purchase history for analytics
-- **Dynamic Badges** - Visual indicators for trending products
+### 📊 Analytics & Trending System
+- **Dynamic Trending Algorithm** - Automatic calculation of top 5 most purchased products
+- **Real-time Updates** - Trending status updates automatically after every purchase
+- **Purchase Analytics** - Complete transaction tracking and sales volume analysis
+- **Visual Trending Indicators** - Dynamic badges appear on popular products based on actual sales data
 
 ## ⚠️ Development Status & Limitations
 
-### � Incomplete Features
-- **User Authentication** - Account system shows "Coming Soon" placeholder
-- **File Delivery** - Download system not implemented (payments process but no file access)
-- **User Profiles** - Account management features not developed
-- **Order Management** - No order history viewing for users
-- **Email System** - No confirmation emails or receipt delivery
+### ❌ Incomplete Features
+- **File Delivery System** - Download buttons link to placeholder URL instead of actual files
+- **Account Settings Functionality** - Profile editing, password changes, and notification settings show placeholder buttons  
+- **Email System** - No confirmation emails or receipt delivery implemented
+- **Account Deletion** - Shows confirmation dialog but doesn't actually delete accounts
 
-### 🔧 Current Implementation
-- **CSV Data Storage** - Simple file-based storage (not production database)
+### 🔧 Current Implementation Approach
+- **CSV Data Storage** - Simple file-based storage for development (not production database)
 - **Development Mode** - Uses Stripe test keys (not live payments)
 - **Local Development** - Designed for local development environment
+- **Academic Prototype** - Built to demonstrate development skills rather than production deployment
 
 ## 🛠️ Technology Stack
 
@@ -53,6 +92,7 @@ A full-stack e-commerce web application prototype for digital sound products, de
 ### Backend Technologies
 - **Flask 3.0.0** - Python web framework for API endpoints
 - **Stripe API 8.5.0** - Server-side payment processing
+- **bcrypt** - Password hashing and verification for secure authentication
 - **CSV File Storage** - Simple data persistence (development approach)
 - **Flask-CORS** - Cross-origin request handling
 - **python-dotenv** - Environment variable management
@@ -91,44 +131,10 @@ FractalSonics/
 ├── userService.py                  # User-related backend functions
 ├── requirements.txt                # Python dependencies
 ├── Products.csv                    # Product data storage
-├── userAccounts.csv                # User account data (placeholder)
+├── userAccounts.csv                # User account data storage
 ├── userPurchaseHistory.csv         # Purchase history storage
 └── README.md                       # Project documentation
 ```
-
-## � Current Implementation Details
-
-### Payment Flow
-1. **Product Selection** - Users browse and add items to cart
-2. **Cart Management** - Review items, adjust quantities, view totals
-3. **Stripe Checkout** - Secure payment processing with Stripe Elements
-4. **Order Recording** - Purchase data saved to CSV files
-5. **Confirmation** - Basic success message (no email delivery yet)
-### Data Storage
-- **CSV Files** - Simple file-based storage for development
-- **Product Catalog** - Static product data with pricing and descriptions
-- **Purchase History** - Transaction logging for analytics
-- **User Data** - Basic user information storage (authentication not active)
-
-### Search and Navigation
-- **Product Search** - Real-time filtering by product name and description
-- **Responsive Navigation** - React Router with conditional search bar display
-- **Cart Badge** - Live cart item count in navigation
-- **Page Routing** - Multi-page application with proper URL management
-
-## � Responsive Design
-
-### Grid Layout System
-- **≥1440px**: 5 columns (optimized for large screens)
-- **1200-1439px**: 4 columns (medium desktop)
-- **900-1199px**: 3 columns (small desktop/tablet landscape)
-- **600-899px**: 2 columns (tablet portrait)
-- **≤599px**: 1 column (mobile devices)
-
-### UI Optimization
-- **Mobile-First Design** - Optimized for small screens with scaling up
-- **Touch-Friendly** - Adequate button sizes and spacing for mobile use
-- **Performance** - Efficient CSS Grid implementation for smooth scrolling
 
 ## 🔧 API Endpoints (Implemented)
 
@@ -211,19 +217,20 @@ STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_test_key_here
 
 ## 🔄 Development Timeline
 
-This project was developed over approximately 145 hours across 3 weeks as an intensive academic exercise, demonstrating:
+This project was developed over ~145 hours across 3 weeks as an intensive academic exercise, demonstrating:
 - Full-stack development capabilities
 - Modern React patterns and state management
 - Payment integration with real payment processing
 - Responsive design implementation
 - API development and data management
 
-## � Technical References
+## 📚 Technical References
 
 ### Core Technologies
 - **React Documentation**: [React.js](https://react.dev/reference/react)
 - **Stripe Integration**: [Stripe Docs](https://docs.stripe.com/)
 - **Flask Framework**: [Flask Documentation](https://flask.palletsprojects.com/en/stable/)
+- **bcrypt Password Hashing**: [bcrypt Documentation](https://pypi.org/project/bcrypt/)
 - **CSS Grid & Flexbox**: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
 
 ### Additional Resources
@@ -250,63 +257,9 @@ This project is currently not accepting external contributions as it's part of a
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments & Core Technology Documentation
-React Router Documentation
+##  Support
 
-https://reactrouter.com/en/main - Essential for implementing the routing system with BrowserRouter, Routes, Route, Link, useLocation, and useNavigate hooks used throughout your App.js
-React Context API
-
-https://react.dev/reference/react/createContext - For implementing the CartContext and state management patterns used in your application
-Node.js and npm
-
-https://docs.npmjs.com/ - For package management and dependency installation (package.json management)
-https://nodejs.org/en/docs/ - For the JavaScript runtime environment
-CSS and Styling Resources
-CSS Flexbox and Grid
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout - For navigation layout and responsive design
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout - For product grid layouts
-CSS Animations and Transitions
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations - For the glitch effects and hover animations in your styling
-Backend and Data Management
-Python CSV Module
-
-https://docs.python.org/3/library/csv.html - For handling CSV file operations in your data storage system
-CORS (Cross-Origin Resource Sharing)
-
-https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS - For handling frontend-backend communication
-Flask-CORS
-
-https://flask-cors.readthedocs.io/en/latest/ - For enabling cross-origin requests between React and Flask
-Payment Processing
-Stripe Elements
-
-https://stripe.com/docs/stripe-js - For frontend payment form integration
-https://stripe.com/docs/payments/payment-intents - For server-side payment processing
-Development Tools
-Create React App
-
-https://create-react-app.dev/docs/getting-started/ - For initial project setup and build configuration
-Git Documentation
-
-https://git-scm.com/doc - For version control and repository management
-VS Code Documentation
-
-https://code.visualstudio.com/docs - For development environment setup and debugging
-JavaScript ES6+ Features
-MDN JavaScript Reference
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference - For modern JavaScript features like arrow functions, destructuring, and async/await
-Fetch API
-
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API - For making HTTP requests between frontend and backend
-These documentation sources have been critical references during the development process, providing the technical foundation for implementing the routing, state management, payment processing, and responsive design features evident in the application.
-
-
-## 📞 Support
-
-For support, email support@fractalsonics.com or visit our support page.
+For support, email fractalsonics@gmail.com or visit our support page.
 
 ---
 
