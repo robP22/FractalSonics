@@ -446,12 +446,59 @@ This project is currently not accepting external contributions as it's part of a
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## 🙏 Acknowledgments & Core Technology Documentation
+React Router Documentation
 
-- **React Team** - For the amazing React framework
-- **Stripe** - For secure payment processing
-- **Flask** - For the lightweight Python web framework
-- **Community** - For inspiration and support
+https://reactrouter.com/en/main - Essential for implementing the routing system with BrowserRouter, Routes, Route, Link, useLocation, and useNavigate hooks used throughout your App.js
+React Context API
+
+https://react.dev/reference/react/createContext - For implementing the CartContext and state management patterns used in your application
+Node.js and npm
+
+https://docs.npmjs.com/ - For package management and dependency installation (package.json management)
+https://nodejs.org/en/docs/ - For the JavaScript runtime environment
+CSS and Styling Resources
+CSS Flexbox and Grid
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout - For navigation layout and responsive design
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout - For product grid layouts
+CSS Animations and Transitions
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations - For the glitch effects and hover animations in your styling
+Backend and Data Management
+Python CSV Module
+
+https://docs.python.org/3/library/csv.html - For handling CSV file operations in your data storage system
+CORS (Cross-Origin Resource Sharing)
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS - For handling frontend-backend communication
+Flask-CORS
+
+https://flask-cors.readthedocs.io/en/latest/ - For enabling cross-origin requests between React and Flask
+Payment Processing
+Stripe Elements
+
+https://stripe.com/docs/stripe-js - For frontend payment form integration
+https://stripe.com/docs/payments/payment-intents - For server-side payment processing
+Development Tools
+Create React App
+
+https://create-react-app.dev/docs/getting-started/ - For initial project setup and build configuration
+Git Documentation
+
+https://git-scm.com/doc - For version control and repository management
+VS Code Documentation
+
+https://code.visualstudio.com/docs - For development environment setup and debugging
+JavaScript ES6+ Features
+MDN JavaScript Reference
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference - For modern JavaScript features like arrow functions, destructuring, and async/await
+Fetch API
+
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API - For making HTTP requests between frontend and backend
+These documentation sources would have been critical references during the 145-hour development process, providing the technical foundation for implementing the routing, state management, payment processing, and responsive design features evident in your application.
+
 
 ## 📞 Support
 
