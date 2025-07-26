@@ -4,7 +4,7 @@ A comprehensive full-stack e-commerce web application for unique sound products,
 
 ## 🚀 Advanced Features
 
-### � User Authentication & Account Management
+### 🔐 User Authentication & Account Management
 - **Secure Registration** - Email validation, password requirements, duplicate prevention
 - **Session-Based Login** - Persistent authentication with secure session management
 - **User Profile Management** - Account information display and management
@@ -32,7 +32,7 @@ A comprehensive full-stack e-commerce web application for unique sound products,
 - **Responsive Design** - Optimized for all screen sizes with adaptive layouts
 - **Professional UI** - High-end styling with glitch effects and gradient themes
 
-### � Professional User Interface
+### 🎨 Professional User Interface
 - **Luxury Design** - High-end styling with custom fonts and gradient themes
 - **Glitch Effects** - Animated logo with pink/green text layers and precise positioning
 - **Responsive Navigation** - Consistent button sizing (90x40px) with hover effects
@@ -128,6 +128,8 @@ FractalSonics/
 │   │   │   ├── shared-utilities.css # Shared utility classes
 │   │   │   └── fonts/               # Custom brand fonts
 │   │   └── index.js                 # React app entry point
+│   ├── package.json                 # Frontend dependencies
+│   └── package-lock.json            # Dependency lock file
 ├── .env                            # Environment variables (Stripe keys)
 ├── app.py                          # Flask backend server with full API
 ├── userService.py                  # User authentication service
@@ -138,6 +140,7 @@ FractalSonics/
 ├── DEPENDENCIES.md                 # Installation guide
 ├── README.md                       # This documentation
 └── SETUP_GUIDE.md                  # Setup instructions
+```
 
 ## 🔐 Authentication System
 
@@ -202,166 +205,6 @@ def update_trending_products():
 - **Success Messages** - User feedback for successful actions
 - **Error Handling** - Graceful error display with recovery options
 - **Hover Effects** - Interactive button and card hover animations
-```
-│   │   │   │   └── index.js         # Product barrel file
-│   │   │   └── ui/                  # UI components
-│   │   │       ├── LoadingSpinner.js # Loading indicator
-│   │   │       ├── Message.js       # Message display
-│   │   │       ├── SearchBar.js     # Search input
-│   │   │       ├── StripeCheckout.js # Stripe checkout form
-│   │   │       ├── StripeCheckoutButton.js # Quick checkout button
-│   │   │       └── index.js         # UI barrel file
-│   │   ├── contexts/                # React contexts
-│   │   │   ├── AuthContext.js       # Authentication state
-│   │   │   ├── CartContext.js       # Shopping cart state
-│   │   │   ├── SearchContext.js     # Search state
-│   │   │   └── ServiceContext.js    # API services
-│   │   ├── hooks/                   # Custom React hooks
-│   │   │   ├── useErrorHandler.js   # Error handling
-│   │   │   ├── useOneClickCheckout.js # Quick checkout
-│   │   │   ├── useProducts.js       # Products data fetching
-│   │   │   └── usePurchaseHistory.js # Purchase history
-│   │   ├── config/                  # Configuration
-│   │   │   ├── navigation.js        # Navigation routes
-│   │   │   └── theme.js             # Theme configuration
-│   │   ├── services/                # API services
-│   │   │   └── ProductService.js    # Product API
-│   │   ├── styles/                  # CSS stylesheets
-│   │   │   ├── accessibility.css    # Accessibility styles
-│   │   │   ├── Account.css          # Account page styles
-│   │   │   ├── App.css              # App-wide styles
-│   │   │   ├── AuthModal.css        # Auth modal styles
-│   │   │   ├── CartPage.css         # Cart page styles
-│   │   │   ├── Home.css             # Homepage styles
-│   │   │   ├── index.css            # Root styles
-│   │   │   ├── LoadingSpinner.css   # Spinner styles
-│   │   │   ├── LoginForm.css        # Login form styles
-│   │   │   ├── Message.css          # Message styles
-│   │   │   ├── Products.css         # Products page styles
-│   │   │   ├── SearchBar.css        # Search bar styles
-│   │   │   ├── shared-utilities.css # Utility classes
-│   │   │   ├── StripeCheckout.css   # Checkout styles
-│   │   │   ├── Support.css          # Support page styles
-│   │   │   └── fonts/               # Custom fonts
-│   │   │       ├── freeday/         # Freeday font
-│   │   │       └── blackcraft/      # Blackcraft font
-│   │   └── index.js                 # App entry point
-│   ├── package.json                 # Frontend dependencies
-│   └── package-lock.json            # Dependency lock file
-├── .vscode/                        # VS Code configuration
-├── __pycache__/                    # Python cache files
-├── .env                           # Environment variables
-├── .gitignore                     # Git ignore file
-├── app.py                         # Flask backend server
-├── DEPENDENCIES.md                # Dependency documentation
-├── FractalSonics UserStories.docx # User stories documentation
-├── package.json                   # Root package configuration
-├── package-lock.json              # Root dependency lock file
-├── Products.csv                   # Product catalog data
-├── README.md                      # Project documentation
-├── requirements.txt               # Python dependencies
-├── SETUP_GUIDE.md                 # Setup instructions
-├── test_stripe_connection.py      # Stripe connection test
-├── userAccounts.csv               # User account data
-├── userPurchaseHistory.csv        # Purchase history data
-└── userService.py                 # User authentication service
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-- **Node.js** (v14 or higher) - JavaScript runtime
-- **npm** (v6 or higher) - Package manager
-- **Python** (v3.8 or higher) - Backend runtime
-- **pip** - Python package manager
-- **Stripe Account** - For payment processing
-
-### Quick Installation
-
-#### Option 1: Using Dependencies File (Recommended)
-```bash
-# Clone the repository
-git clone https://github.com/robP22/FractalSonics.git
-cd FractalSonics
-
-# Install all dependencies at once
-npm run install-all
-```
-
-#### Option 2: Manual Installation
-```bash
-# Clone the repository
-git clone https://github.com/robP22/FractalSonics.git
-cd FractalSonics
-
-# Install frontend dependencies
-cd my-app
-npm install
-
-# Install backend dependencies
-cd ..
-pip install -r requirements.txt
-```
-
-### Environment Setup
-
-Create a `.env` file in the `my-app` directory:
-```env
-REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_key_here
-REACT_APP_API_URL=http://localhost:5000
-```
-
-### Running the Application
-
-1. **Start the Flask backend** (Terminal 1):
-   ```bash
-   cd FractalSonics
-   python app.py
-   ```
-
-2. **Start the React frontend** (Terminal 2):
-   ```bash
-   cd FractalSonics/my-app
-   npm start
-   ```
-
-3. **Access the application**:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:5000
-
-## 🎨 Design Features
-
-### CSS Architecture
-- **Naming Convention**: `fractal-sonics-*` prefix for all custom classes
-- **Design Tokens**: CSS custom properties in `shared-utilities.css`
-- **Responsive Grid**: CSS Grid with breakpoint-specific column counts (1-5 columns)
-- **Typography**: Segoe UI font stack with custom brand fonts (Freeday, Blackcraft)
-- **Dark Mode Scrollbars**: Cross-browser custom scrollbar styling
-
-### Visual Design
-- **5-Column Grid**: Optimized for 1440px+ screens (MacBook Pro 15.4")
-- **Smart Scaling**: Product cards adapt based on cart size
-- **Luxury Styling**: High-end typography with letter-spacing and weight variations
-- **Consistent Spacing**: Optimized padding (banner: 20px top, 60px bottom)
-- **Image Consistency**: object-fit: cover ensures uniform product display
-
-### Color Scheme
-- **Primary Gradient**: Black to purple (`#000000` to `#764ba2`)
-- **Accent Colors**: Blue (`#007bff`) for interactive elements
-- **Status Colors**: Green for success, red for errors, orange for trending
-
-## 🛒 Smart Cart Features
-
-### Adaptive Cart Management
-- **Size-Based Scaling**: Cart adjusts product grid (4→3→2 columns based on cart size)
-- **Real-time Updates**: Instant price calculations and quantity tracking
-- **Visual Feedback**: 3-second removal confirmations with product names
-- **Persistent Storage**: Cart maintained in localStorage across sessions
-
-### Trending Products Integration
-- **Purchase History Analysis**: Trending products calculated from actual purchase data
-- **Dynamic Display**: Trending badges appear on popular products
-- **Fallback Logic**: Shows default products when no purchase history available
 
 ## 🔧 API Documentation
 
@@ -438,7 +281,81 @@ REACT_APP_API_URL=http://localhost:5000
 }
 ```
 
-## 📱 Responsive Breakpoints
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js** (v14 or higher) - JavaScript runtime
+- **npm** (v6 or higher) - Package manager
+- **Python** (v3.8 or higher) - Backend runtime
+- **pip** - Python package manager
+- **Stripe Account** - For payment processing
+
+### Quick Installation
+
+#### Option 1: Clone and Install
+```bash
+# Clone the repository
+git clone https://github.com/robP22/FractalSonics.git
+cd FractalSonics
+
+# Install frontend dependencies
+cd my-app
+npm install
+
+# Install backend dependencies
+cd ..
+pip install -r requirements.txt
+```
+
+### Environment Setup
+
+Create a `.env` file in the root directory:
+```env
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
+STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
+```
+
+### Running the Application
+
+1. **Start the Flask backend** (Terminal 1):
+   ```bash
+   cd FractalSonics
+   python app.py
+   ```
+
+2. **Start the React frontend** (Terminal 2):
+   ```bash
+   cd FractalSonics/my-app
+   npm start
+   ```
+
+3. **Access the application**:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
+
+## 🎨 Design Features
+
+### CSS Architecture
+- **Naming Convention**: `fractal-sonics-*` prefix for all custom classes
+- **Design Tokens**: CSS custom properties in `shared-utilities.css`
+- **Responsive Grid**: CSS Grid with breakpoint-specific column counts (1-5 columns)
+- **Typography**: Segoe UI font stack with custom brand fonts (Freeday, Blackcraft)
+- **Glitch Effects**: Animated text with pink and green color layers
+
+### Visual Design
+- **5-Column Grid**: Optimized for 1440px+ screens (MacBook Pro 15.4")
+- **Smart Scaling**: Product cards adapt based on cart size
+- **Luxury Styling**: High-end typography with letter-spacing and weight variations
+- **Consistent Spacing**: Optimized padding and margin calculations
+- **Image Consistency**: object-fit: cover ensures uniform product display
+
+### Color Scheme
+- **Primary Gradient**: Black to purple (`#000000` to `#764ba2`)
+- **Accent Colors**: Blue (`#007bff`) for interactive elements
+- **Status Colors**: Green for success, red for errors, orange for trending
+- **Glitch Colors**: Pink (`#ff0080`) and Green (`#00ff80`) for text effects
+
+## 📱 Responsive Design
 
 ### Grid Layout System
 - **≥1440px**: 5 columns (MacBook Pro 15.4" optimized)
@@ -467,24 +384,18 @@ REACT_APP_API_URL=http://localhost:5000
 - **CSS Minification**: Reduced stylesheet sizes
 - **Font Display Swap**: Non-blocking font loading
 
-## 📚 Documentation
+## 🛒 Smart Cart Features
 
-### Additional Resources
-- **DEPENDENCIES.md**: Complete dependency installation guide
-- **requirements.txt**: Python backend dependencies
-- **package.json**: NPM scripts and frontend dependencies
+### Adaptive Cart Management
+- **Size-Based Scaling**: Cart adjusts product grid (4→3→2 columns based on cart size)
+- **Real-time Updates**: Instant price calculations and quantity tracking
+- **Visual Feedback**: 3-second removal confirmations with product names
+- **Persistent Storage**: Cart maintained in localStorage across sessions
 
-### Recent Updates
-- Added SearchBar component and searchTerm state for real-time product filtering
-- Implemented CartContext, CartPage, and CheckoutPage for cart and checkout functionality
-- Cleaned up codebase for redundant imports and improved prop passing
-
-### Component Documentation
-Each component includes:
-- JSDoc comments for functions
-- CSS class naming conventions
-- Responsive design considerations
-- Accessibility features
+### Trending Products Integration
+- **Purchase History Analysis**: Trending products calculated from actual purchase data
+- **Dynamic Display**: Trending badges appear on popular products
+- **Fallback Logic**: Shows default products when no purchase history available
 
 ## 🔗 Links & Resources
 
@@ -493,15 +404,25 @@ Each component includes:
 - **Flask Documentation**: [Flask](https://flask.palletsprojects.com/)
 - **Stripe Integration**: [Stripe React](https://stripe.com/docs/stripe-js/react)
 
----
+## 📚 Additional Documentation
 
-**Built with ❤️ for music producers and beat makers**
+### Component Architecture
+- **AuthContext** - Global authentication state with login/logout methods
+- **CartContext** - Shopping cart state with add/remove/update functionality
+- **SearchContext** - Product search state with real-time filtering
+- **ServiceContext** - API service management and error handling
 
-### Mobile Optimizations
-- Touch-friendly button sizes
-- Simplified navigation
-- Optimized form layouts
-- Compressed content spacing
+### Custom Hooks
+- **useProducts** - Product data fetching and management
+- **usePurchaseHistory** - User purchase history management
+- **useErrorHandler** - Centralized error handling and user feedback
+- **useOneClickCheckout** - Quick checkout functionality with Stripe
+
+### Styling System
+- **App.css** - Main application styles with glitch effects and navbar
+- **CartPage.css** - Cart-specific styling with custom navbar alignment
+- **shared-utilities.css** - Reusable utility classes and design tokens
+- **Component CSS** - Individual component styling with BEM-like naming
 
 ## 🚀 Deployment
 
@@ -514,21 +435,22 @@ npm run build
 
 ### Backend Deployment
 - Configure your Python/Flask server
-- Set up database connections
-- Configure Stripe webhook endpoints
+- Set up environment variables for production
+- Configure Stripe webhook endpoints for live payments
 
 ## 🤝 Contributing
 
-1. Currently not accepting contributions.
+This project is currently not accepting external contributions as it's part of an academic assignment.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
 - **React Team** - For the amazing React framework
 - **Stripe** - For secure payment processing
+- **Flask** - For the lightweight Python web framework
 - **Community** - For inspiration and support
 
 ## 📞 Support
@@ -537,4 +459,6 @@ For support, email support@fractalsonics.com or visit our support page.
 
 ---
 
-**Built with ❤️ by the Fractal Sonics Team**
+**Built with ❤️ for music producers and beat makers**
+
+*This comprehensive e-commerce platform demonstrates advanced full-stack development skills, modern React patterns, secure payment processing, and professional UI/UX design.*
