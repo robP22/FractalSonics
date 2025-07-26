@@ -71,54 +71,95 @@ FractalSonics/
 ├── my-app/                          # React application
 │   ├── public/                      # Static assets and images
 │   │   ├── Arbitrary Kit Art.png    # Product images
-│   │   ├── beatpack.png            # Product images
-│   │   └── navbar-texture.png      # UI background texture
+│   │   ├── beatpack.png             # Product images
+│   │   ├── placeholder-image.png    # Default product image
+│   │   ├── navbar-texture.png       # UI background texture
+│   │   └── stripe_backup_code.txt   # Stripe backup codes
 │   ├── src/                         # Source code
 │   │   ├── components/              # React components
-│   │   │   ├── App.js              # Main application component
-│   │   │   ├── Home.js             # Homepage with trending products
-│   │   │   ├── Products.js         # Product catalog with 5-column grid
-│   │   │   ├── ProductCard.js      # Individual product card with checkout
-│   │   │   ├── CartPage.js         # Smart scaling shopping cart (uses CartContext)
-│   │   │   ├── CartContext.js      # Cart state management (add, remove, update, clear)
-│   │   │   ├── Support.js          # Customer support page
-│   │   │   ├── Navigation.js       # Enhanced navigation bar
-│   │   │   ├── SearchBar.js        # Search bar component for product filtering
-│   │   │   ├── StripeCheckout.js   # Stripe payment processing
-│   │   │   └── StripeCheckoutButton.js # Rapid checkout buttons
-│   │   ├── hooks/                  # Custom React hooks
-│   │   │   ├── useProducts.js      # Product data fetching
-│   │   │   ├── usePurchaseHistory.js # Purchase history integration
-│   │   │   ├── useErrorHandler.js  # Error state management
-│   │   │   └── useSearch.js        # Search functionality (optional, not required for basic search bar)
-│   │   ├── contexts/               # React context providers
-│   │   │   ├── AuthContext.js      # User authentication
-│   │   │   ├── SearchContext.js    # Search state management
-│   │   │   └── ServiceContext.js   # API service context
-│   │   ├── styles/                 # CSS stylesheets
-│   │   │   ├── App.css             # Main application & navigation styles
-│   │   │   ├── Home.css            # Homepage grid layout
-│   │   │   ├── Products.css        # 5-column responsive grid
-│   │   │   ├── CartPage.css        # Smart cart scaling styles
-│   │   │   ├── Support.css         # Support page styling
-│   │   │   ├── shared-utilities.css # Design tokens & utilities
-│   │   │   └── fonts/              # Custom brand fonts
-│   │   │       ├── freeday/        # Freeday font files
-│   │   │       └── blackcraft/     # Blackcraft font files
-│   │   ├── config/                 # Configuration files
-│   │   │   └── navigation.js       # Navigation configuration
-│   │   └── services/               # API service modules
-│   │       └── ProductService.js   # Product API integration
-│   ├── package.json                # Frontend dependencies
-│   └── package-lock.json           # Dependency lock file
-├── app.py                          # Flask backend server
-├── userService.py                  # User authentication service
-├── Products.csv                    # Product catalog data
-├── userAccounts.csv                # User account data
-├── userPurchaseHistory.csv         # Purchase history for trending
-├── package.json                    # Root package configuration
-├── requirements.txt                # Python dependencies (generated)
-└── README.md                       # This documentation
+│   │   │   ├── App.js               # Main application component
+│   │   │   ├── forms/               # Form components
+│   │   │   │   ├── AuthModal.js     # Authentication modal
+│   │   │   │   ├── LoginForm.js     # Login form
+│   │   │   │   ├── RegisterForm.js  # Registration form
+│   │   │   │   └── index.js         # Forms barrel file
+│   │   │   ├── layout/              # Layout components
+│   │   │   │   ├── Navigation.js    # Navigation bar
+│   │   │   │   ├── PageLayout.js    # Common page layout
+│   │   │   │   └── index.js         # Layout barrel file
+│   │   │   ├── pages/               # Page components
+│   │   │   │   ├── Account.js       # User account page
+│   │   │   │   ├── CartPage.js      # Shopping cart page
+│   │   │   │   ├── CheckoutSuccess.js # Checkout success page
+│   │   │   │   ├── Home.js          # Homepage
+│   │   │   │   ├── Products.js      # Products listing page
+│   │   │   │   ├── Support.js       # Support page
+│   │   │   │   └── index.js         # Pages barrel file
+│   │   │   ├── product/             # Product components
+│   │   │   │   ├── ProductCard.js   # Individual product card
+│   │   │   │   ├── ProductGrid.js   # Product grid layout
+│   │   │   │   └── index.js         # Product barrel file
+│   │   │   └── ui/                  # UI components
+│   │   │       ├── LoadingSpinner.js # Loading indicator
+│   │   │       ├── Message.js       # Message display
+│   │   │       ├── SearchBar.js     # Search input
+│   │   │       ├── StripeCheckout.js # Stripe checkout form
+│   │   │       ├── StripeCheckoutButton.js # Quick checkout button
+│   │   │       └── index.js         # UI barrel file
+│   │   ├── contexts/                # React contexts
+│   │   │   ├── AuthContext.js       # Authentication state
+│   │   │   ├── CartContext.js       # Shopping cart state
+│   │   │   ├── SearchContext.js     # Search state
+│   │   │   └── ServiceContext.js    # API services
+│   │   ├── hooks/                   # Custom React hooks
+│   │   │   ├── useErrorHandler.js   # Error handling
+│   │   │   ├── useOneClickCheckout.js # Quick checkout
+│   │   │   ├── useProducts.js       # Products data fetching
+│   │   │   └── usePurchaseHistory.js # Purchase history
+│   │   ├── config/                  # Configuration
+│   │   │   ├── navigation.js        # Navigation routes
+│   │   │   └── theme.js             # Theme configuration
+│   │   ├── services/                # API services
+│   │   │   └── ProductService.js    # Product API
+│   │   ├── styles/                  # CSS stylesheets
+│   │   │   ├── accessibility.css    # Accessibility styles
+│   │   │   ├── Account.css          # Account page styles
+│   │   │   ├── App.css              # App-wide styles
+│   │   │   ├── AuthModal.css        # Auth modal styles
+│   │   │   ├── CartPage.css         # Cart page styles
+│   │   │   ├── Home.css             # Homepage styles
+│   │   │   ├── index.css            # Root styles
+│   │   │   ├── LoadingSpinner.css   # Spinner styles
+│   │   │   ├── LoginForm.css        # Login form styles
+│   │   │   ├── Message.css          # Message styles
+│   │   │   ├── Products.css         # Products page styles
+│   │   │   ├── SearchBar.css        # Search bar styles
+│   │   │   ├── shared-utilities.css # Utility classes
+│   │   │   ├── StripeCheckout.css   # Checkout styles
+│   │   │   ├── Support.css          # Support page styles
+│   │   │   └── fonts/               # Custom fonts
+│   │   │       ├── freeday/         # Freeday font
+│   │   │       └── blackcraft/      # Blackcraft font
+│   │   └── index.js                 # App entry point
+│   ├── package.json                 # Frontend dependencies
+│   └── package-lock.json            # Dependency lock file
+├── .vscode/                        # VS Code configuration
+├── __pycache__/                    # Python cache files
+├── .env                           # Environment variables
+├── .gitignore                     # Git ignore file
+├── app.py                         # Flask backend server
+├── DEPENDENCIES.md                # Dependency documentation
+├── FractalSonics UserStories.docx # User stories documentation
+├── package.json                   # Root package configuration
+├── package-lock.json              # Root dependency lock file
+├── Products.csv                   # Product catalog data
+├── README.md                      # Project documentation
+├── requirements.txt               # Python dependencies
+├── SETUP_GUIDE.md                 # Setup instructions
+├── test_stripe_connection.py      # Stripe connection test
+├── userAccounts.csv               # User account data
+├── userPurchaseHistory.csv        # Purchase history data
+└── userService.py                 # User authentication service
 ```
 
 ## 🚀 Getting Started
