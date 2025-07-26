@@ -497,7 +497,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference - For modern J
 Fetch API
 
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API - For making HTTP requests between frontend and backend
-These documentation sources would have been critical references during the 145-hour development process, providing the technical foundation for implementing the routing, state management, payment processing, and responsive design features evident in your application.
+These documentation sources have been critical references during the development process, providing the technical foundation for implementing the routing, state management, payment processing, and responsive design features evident in the application.
 
 
 ## 📞 Support
