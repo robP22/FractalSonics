@@ -40,44 +40,72 @@
 /* Contact Information Section */
 .contact-info {
   padding: 30px;
-  border-radius: 10px;
-  background: #f8f9fa;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
 }
 
 .contact-info h2 {
   color: #333;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   font-size: 1.8rem;
+  text-align: center;
+}
+
+.contact-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .contact-item {
   display: flex;
-  align-items: flex-start;
-  margin: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .contact-item:last-child {
-  border-bottom: none;
   margin-bottom: 0;
 }
 
 .contact-icon {
-  font-size: 2rem;
-  margin: 15px;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.contact-details {
+  width: 100%;
 }
 
 .contact-details h3 {
   color: #333;
-  margin: 0 0 10px 0;
-  font-size: 1.2rem;
+  margin: 0 0 12px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .contact-details p {
-  margin: 5px 0;
+  margin: 6px 0;
   color: #555;
+  line-height: 1.4;
 }
 
 .phone-number {
@@ -86,29 +114,115 @@
   color: #764ba2 !important;
 }
 
+.email-address {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #764ba2 !important;
+}
+
 .hours {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #666 !important;
+  font-weight: 500;
 }
 
 .response-time {
   font-style: italic;
+  color: #28a745 !important;
+  font-weight: 500;
+}
+
+.chat-status {
+  color: #28a745 !important;
+  font-weight: 600;
+}
+
+.social-links {
   color: #666 !important;
+  font-weight: 500;
+}
+
+.social-platforms {
+  color: #764ba2 !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.contact-note {
+  font-size: 0.9rem;
+  color: #888 !important;
+  font-style: italic;
+  margin-top: 8px;
 }
 
 /* Contact Form Section */
 .contact-form-container {
   padding: 30px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #764ba2;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.15);
+  position: relative;
+}
+
+.contact-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #764ba2, #667eea, #764ba2);
+  border-radius: 12px 12px 0 0;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
 }
 
 .contact-form-container h2 {
   color: #333;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.form-description {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-benefits {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 4px solid #764ba2;
+}
+
+.form-benefits h4 {
+  color: #333;
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.form-benefits ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #555;
+}
+
+.form-benefits li {
+  margin: 8px 0;
+  line-height: 1.4;
 }
 
 .contact-form {
@@ -219,9 +333,13 @@
 
 .faq-section h2 {
   text-align: center;
-  color: #333;
+  color: white;
   margin-bottom: 30px;
   font-size: 2rem;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    4px 4px 8px rgba(0, 0, 0, 0.6),
+    1px 1px 2px rgba(118, 75, 162, 0.9);
 }
 
 .faq-grid {
@@ -236,6 +354,8 @@
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .faq-item:hover {
@@ -245,14 +365,21 @@
 
 .faq-item h3 {
   color: #333;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   font-size: 1.1rem;
+  line-height: 1.4;
+  min-height: 3.2em; /* Ensures consistent height for questions */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
 }
 
 .faq-item p {
   color: #555;
   line-height: 1.5;
   margin: 0;
+  flex-grow: 1;
 }
 
 /* Responsive Design */

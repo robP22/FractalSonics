@@ -1,22 +1,24 @@
 /* ===== FRACTAL SONICS HOME PAGE STYLES ===== */
 
 /* ===== HOME PAGE MAIN CONTAINER ===== */
-.fractal-sonics-home-page-container {
-  padding: 15px 10px;
+.home-page {
+  padding: 15px 40px;
+  max-width: 2200px;
+  margin: 0 auto;
 }
 
 /* ===== NEW PRODUCTS SHOWCASE SECTION ===== */
-.fractal-sonics-new-products-section {
+.products-section {
   text-align: left;
 }
 
-.fractal-sonics-new-products-section-title {
+.products-section-title {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
   text-align: center;
   /* Enhanced visibility with glow effect */
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(118, 75, 162, 0.6),
     0 0 30px rgba(118, 75, 162, 0.4),
@@ -24,34 +26,58 @@
   font-weight: 600;
 }
 
-.fractal-sonics-new-products-horizontal-scroll {
+.home-products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
   width: 100%;
-  overflow-x: hidden;
   box-sizing: border-box;
-  padding: 1rem 0;
+  padding: 0;
+  margin: 0 auto;
 }
 
 /* ===== RESPONSIVE ADJUSTMENTS FOR HOME GRID ===== */
-@media (max-width: 768px) {
-  .fractal-sonics-new-products-horizontal-scroll {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+@media (min-width: 1440px) {
+  .home-products-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .home-products-grid {
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .fractal-sonics-new-products-horizontal-scroll {
+@media (min-width: 900px) and (max-width: 1199px) {
+  .home-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .home-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .home-products-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 0.5rem 0;
+  }
+  
+  .home-page {
+    padding: 15px 20px;
   }
 }
 
 /* ===== PRODUCT CARD OVERRIDE FOR HOME LAYOUT ===== */
-.fractal-sonics-new-products-horizontal-scroll .fractal-sonics-product-card-container {
-  margin: 0; /* Ensure no conflicting margins */
+.home-products-grid .product-card {
+  margin: 0;
+  /* Ensure no conflicting margins */
 }
-

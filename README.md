@@ -14,12 +14,13 @@ A modern e-commerce web application for unique sound products, featuring a React
 ### 🎨 User Interface
 - **Luxury Design** - High-end styling with Segoe UI typography and gradient themes
 - **Enhanced Navigation** - Consistent 90x40px navigation buttons with hover effects
-- **Advanced Search** - Real-time product search with context-aware display
+- **Advanced Search** - Real-time product search with context-aware display (SearchBar component, searchTerm state, and product filtering)
 - **Visual Feedback** - Cart icon with item count badge and removal notifications
 - **Professional Banner** - Glitch-effect logo with optimized spacing (20px top, 60px bottom)
 
 ### 🛒 Shopping Experience
-- **Smart Cart Scaling** - Responsive cart that adapts layout based on item count
+- **Smart Cart Scaling** - Responsive cart adapts layout based on item count
+- **Cart & Checkout** - CartContext for global state, CartPage and CheckoutPage for UI, and `/api/checkout` endpoint for order processing
 - **Auto-removal** - Items automatically removed when quantity reaches zero
 - **Purchase History Integration** - Trending products calculated from actual purchase data
 - **One-Click Checkout** - Stripe checkout buttons directly on product cards
@@ -78,18 +79,18 @@ FractalSonics/
 │   │   │   ├── Home.js             # Homepage with trending products
 │   │   │   ├── Products.js         # Product catalog with 5-column grid
 │   │   │   ├── ProductCard.js      # Individual product card with checkout
-│   │   │   ├── CartPage.js         # Smart scaling shopping cart
-│   │   │   ├── CartContext.js      # Cart state management
+│   │   │   ├── CartPage.js         # Smart scaling shopping cart (uses CartContext)
+│   │   │   ├── CartContext.js      # Cart state management (add, remove, update, clear)
 │   │   │   ├── Support.js          # Customer support page
 │   │   │   ├── Navigation.js       # Enhanced navigation bar
-│   │   │   ├── SearchBar.js        # Context-aware search
+│   │   │   ├── SearchBar.js        # Search bar component for product filtering
 │   │   │   ├── StripeCheckout.js   # Stripe payment processing
 │   │   │   └── StripeCheckoutButton.js # Rapid checkout buttons
 │   │   ├── hooks/                  # Custom React hooks
 │   │   │   ├── useProducts.js      # Product data fetching
 │   │   │   ├── usePurchaseHistory.js # Purchase history integration
 │   │   │   ├── useErrorHandler.js  # Error state management
-│   │   │   └── useSearch.js        # Search functionality
+│   │   │   └── useSearch.js        # Search functionality (optional, not required for basic search bar)
 │   │   ├── contexts/               # React context providers
 │   │   │   ├── AuthContext.js      # User authentication
 │   │   │   ├── SearchContext.js    # Search state management
@@ -220,10 +221,8 @@ REACT_APP_API_URL=http://localhost:5000
 
 ### Backend Endpoints
 - `GET /api/products` - Fetch all products with image URLs
-- `GET /api/purchase-history` - Get purchase data for trending analysis
-- `POST /api/login` - User authentication with session management
-- `POST /api/register` - New user registration
-- `POST /api/checkout` - Order processing with customer data
+- `POST /api/checkout` - Order processing with customer data (cart and customer info)
+- (Other endpoints: `/api/purchase-history`, `/api/login`, `/api/register`)
 
 ### Data Structure
 ```json
@@ -234,6 +233,7 @@ REACT_APP_API_URL=http://localhost:5000
   "price": 20.00,
   "category": "Beat Packs",
   "image_url": "/beatpack.png"
+  // ...other fields (tags, download_link, etc.)
 }
 ```
 
@@ -272,6 +272,11 @@ REACT_APP_API_URL=http://localhost:5000
 - **DEPENDENCIES.md**: Complete dependency installation guide
 - **requirements.txt**: Python backend dependencies
 - **package.json**: NPM scripts and frontend dependencies
+
+### Recent Updates
+- Added SearchBar component and searchTerm state for real-time product filtering
+- Implemented CartContext, CartPage, and CheckoutPage for cart and checkout functionality
+- Cleaned up codebase for redundant imports and improved prop passing
 
 ### Component Documentation
 Each component includes:

@@ -17,7 +17,7 @@ export function useProducts(featuredOnly = false, count = 5, onError) {
     const { searchTerm } = useSearch();
 
     useEffect(() => {
-        const loadProducts = async () => {
+        const fetchProducts = async () => {
             try {
                 setLoading(true);
                 setError(null);
@@ -36,7 +36,7 @@ export function useProducts(featuredOnly = false, count = 5, onError) {
             }
         };
         
-        loadProducts();
+        fetchProducts();
     }, [featuredOnly, count, productService, onError]);
     
     const filteredProducts = useMemo(() => {

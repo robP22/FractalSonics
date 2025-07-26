@@ -1,25 +1,26 @@
 import React from 'react';
+import '../../styles/Message.css';
 
 /**
- * Reusable Message component for displaying notifications
+ * Unified Message component for displaying notifications
  * Consolidates message display logic used across multiple components
  */
-export default function Message({ message, type, className = '', onClose }) {
+export default function Message({ message, type = 'info', className = '', onClose }) {
     if (!message) return null;
 
     const getMessageClass = () => {
         const baseClass = 'message';
-        const typeClass = type ? `${baseClass}-${type}` : '';
+        const typeClass = type ? `${baseClass} ${type}` : '';
         return `${baseClass} ${typeClass} ${className}`.trim();
     };
 
     return (
         <div className={getMessageClass()}>
-            {message}
+            <span className="message-text">{message}</span>
             {onClose && (
                 <button 
                     onClick={onClose}
-                    className="message-close-btn"
+                    className="message-close-button"
                     aria-label="Close message"
                 >
                     ×

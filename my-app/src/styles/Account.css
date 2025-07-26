@@ -16,18 +16,82 @@
 }
 
 .account-welcome {
-    padding: 20px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 20px 0;
 }
 
 .account-welcome h2 {
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.account-info {
+    margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.account-info p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.account-note {
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+    font-size: 0.9rem;
 }
 
 .account-login-container {
-    padding: 20px;
-    max-width: 400px;
+    padding: 40px 20px;
+    max-width: 500px;
     margin: 0 auto;
+    text-align: center;
+}
+
+.account-prompt {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.account-prompt h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.account-prompt p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.open-auth-button {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.open-auth-button:hover {
+    background: linear-gradient(135deg, #0056b3, #004085);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
 /* User Profile Section */
@@ -62,10 +126,15 @@
 .logout-button {
     background-color: #6c757d;
     color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 .logout-button:hover {
     background-color: #5a6268;
+    transform: translateY(-1px);
 }
 
 .delete-account-button {

@@ -6,11 +6,11 @@ import {
   useStripe,
   useElements
 } from '@stripe/react-stripe-js';
-import { useCart } from './CartContext';
-import '../styles/StripeCheckout.css';
+import { useCart } from '../../contexts/CartContext';
+import '../../styles/StripeCheckout.css';
 
 // Replace with your actual Stripe publishable key
-const stripePromise = loadStripe('pk_test_your_stripe_publishable_key_here');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY || 'pk_test_your_stripe_publishable_key_here');
 
 const CheckoutForm = ({ total, onSuccess, onError }) => {
   const stripe = useStripe();

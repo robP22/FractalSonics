@@ -1,15 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { CartProvider } from './CartContext';
+import { CartProvider } from '../contexts/CartContext';
 import { SearchProvider } from '../contexts/SearchContext';
 import { ServiceProvider } from '../contexts/ServiceContext';
 import { AuthProvider } from '../contexts/AuthContext';
-import Home from './Home';
-import Products from './Products';
-import CartPage from './CartPage';
-import Support from './Support';
-import Account from './Account';
-import Navigation from './Navigation';
+import { Home, Products, CartPage, CheckoutSuccess, Support, Account } from './pages';
+import { Navigation } from './layout';
 import '../styles/shared-utilities.css';
 import '../styles/App.css';
 import '../styles/accessibility.css';
@@ -34,6 +30,7 @@ function AppContent() {
         <Route path="/products" element={<Products />} />
         <Route path="/support" element={<Support />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/success" element={<CheckoutSuccess />} />
         <Route path="/account" element={<Account />} />
       </Routes>
     </div>

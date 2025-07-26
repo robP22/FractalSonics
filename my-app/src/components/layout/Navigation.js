@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useCart, getCartItemCount } from './CartContext';
-import { useSearch } from '../contexts/SearchContext';
-import SearchBar from './SearchBar';
-import { navigationItems, shouldShowSearch } from '../config/navigation';
-import { useAuth } from '../contexts/AuthContext';
+import { useCart, getCartItemCount } from '../../contexts/CartContext';
+import { useSearch } from '../../contexts/SearchContext';
+import { SearchBar } from '../ui';
+import { navigationItems, shouldShowSearch } from '../../config/navigation';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function Navigation() {
     const location = useLocation();
     const { cart } = useCart();
-    const { searchTerm, setSearchTerm, handleSearch } = useSearch();
+    const { searchTerm, setSearchTerm, search } = useSearch();
     const { isAuthenticated } = useAuth();
     
     const showSearchBar = shouldShowSearch(location.pathname);
@@ -18,28 +18,28 @@ export default function Navigation() {
     );
 
     return (
-        <div className="fractal-sonics-main-navigation-bar">
-            <div className="fractal-sonics-search-bar-container-left">
+        <div className="main-nav">
+            <div className="nav-search">
                 {location.pathname === '/cart' ? (
-                    <h1 className="fractal-sonics-cart-page-logo" data-text="Fractal Sonics">
+                    <h1 className="cart-logo" data-text="Fractal Sonics">
                         Fractal Sonics
                     </h1>
                 ) : showSearchBar ? (
                     <SearchBar
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
-                        onSearch={handleSearch}
+                        onSearch={search}
                     />
                 ) : null}
             </div>
             
-            <nav className="fractal-sonics-navigation-tiles-center-group">
+            <nav className="nav-center">
                 {mainNavItems.map(({ path, label }) => (
                     <Link
                         key={path}
                         to={path}
-                        className={`fractal-sonics-navigation-tile-button ${
-                            location.pathname === path ? 'fractal-sonics-navigation-tile-button-active' : ''
+                        className={`nav-button ${
+                            location.pathname === path ? 'nav-button-active' : ''
                         }`}
                     >
                         {label}
@@ -47,9 +47,9 @@ export default function Navigation() {
                 ))}
             </nav>
             
-            <div className="fractal-sonics-user-icons-container-right">
-                <Link to="/account" className="fractal-sonics-account-icon-link">
-                    <div className={`fractal-sonics-account-icon-button ${
+            <div className="nav-actions">
+                <Link to="/account" className="account-link">
+                    <div className={`account-icon ${
                         isAuthenticated ? 'logged-in' : ''
                     }`}>
                         👤
@@ -58,11 +58,11 @@ export default function Navigation() {
                         )}
                     </div>
                 </Link>
-                <Link to="/cart" className="fractal-sonics-cart-icon-link">
-                    <div className="fractal-sonics-cart-icon-button">
+                <Link to="/cart" className="cart-link">
+                    <div className="cart-icon">
                         🛒
                         {getCartItemCount(cart) > 0 && (
-                            <span className="fractal-sonics-cart-item-count-badge">
+                            <span className="cart-badge">
                                 {getCartItemCount(cart)}
                             </span>
                         )}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useCart } from './CartContext';
-import StripeCheckout from './StripeCheckout';
-import '../styles/CartPage.css';
+import { useCart } from '../../contexts/CartContext';
+import { StripeCheckout } from '../ui';
+import '../../styles/CartPage.css';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -18,7 +18,7 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   
   // Determine cart size class for responsive scaling
-  const getCartSizeClass = () => {
+  const getCartSize = () => {
     const itemCount = cart.length;
     if (itemCount <= 2) return 'cart-size-small';
     if (itemCount <= 5) return 'cart-size-medium';
@@ -26,9 +26,9 @@ export default function CartPage() {
     return 'cart-size-xlarge';
   };
   
-  const shouldShowImages = cart.length <= 5;
+  const showImages = cart.length <= 5;
 
-  const handleCheckoutSuccess = (successMessage) => {
+  const onCheckoutSuccess = (successMessage) => {
     setMessage(successMessage);
     setMessageType('success');
     setShowCheckout(false);
@@ -36,11 +36,40 @@ export default function CartPage() {
     setTimeout(() => setMessage(''), 5000);
   };
 
-  const handleCheckoutError = (errorMessage) => {
+  const onCheckoutError = (errorMessage) => {
     setMessage(errorMessage);
     setMessageType('error');
     // Clear message after 5 seconds
     setTimeout(() => setMessage(''), 5000);
+  };
+
+  const startCheckout = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          cart_items: cart
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        onCheckoutError(data.error);
+        return;
+      }
+
+      // Redirect to Stripe checkout
+      window.location.href = data.url;
+      
+    } catch (error) {
+      console.error('Checkout error:', error);
+      onCheckoutError('Failed to start checkout. Please try again.');
+    }
   };
 
   if (cart.length === 0) {
@@ -78,14 +107,14 @@ export default function CartPage() {
         <div className='cart-items-section'>
           <div className='cart-tile'>
             <h2>Your Cart</h2>
-            <ul className={`cart-item-list ${getCartSizeClass()}`}>
+            <ul className={`cart-item-list ${getCartSize()}`}>
               {cart.map(item => {
                 console.log('Cart item id:', item.id, 'Type:', typeof item.id);
                 return (
                   <li key={item.id} className='cart-item-tile'>
                     <div className='cart-item-left'>
                       <p className="cart-item-title">{item.title}</p>
-                      {shouldShowImages && (
+                      {showImages && (
                         <img src={item.image_url} alt={item.title} className='cart-image-frame' />
                       )}
                       <p className="cart-item-description">{item.description}</p>
@@ -120,11 +149,7 @@ export default function CartPage() {
               })}
             </ul>
 
-            <div className="clear-cart-section">
-              <button onClick={clearCart} className='clear-cart-btn'>
-                Clear Cart
-              </button>
-            </div>
+
           </div>
         </div>
 
@@ -132,11 +157,19 @@ export default function CartPage() {
         <div className="checkout-sidebar">
           {showCheckout ? (
             <div className="checkout-section">
-              <h2>Checkout</h2>
+              <div className="checkout-header">
+                <h2>Checkout</h2>
+                <button
+                  onClick={() => setShowCheckout(false)}
+                  className='go-back-btn'
+                >
+                  ← Go Back
+                </button>
+              </div>
               <StripeCheckout
                 total={total}
-                onSuccess={handleCheckoutSuccess}
-                onError={handleCheckoutError}
+                onSuccess={onCheckoutSuccess}
+                onError={onCheckoutError}
               />
             </div>
           ) : (
@@ -151,10 +184,17 @@ export default function CartPage() {
 
               <div className="cart-actions">
                 <button
-                  onClick={() => setShowCheckout(!showCheckout)}
-                  className='checkout-btn'
+                  onClick={startCheckout}
+                  className='checkout-btn btn-primary'
+                  disabled={cart.length === 0}
                 >
                   Proceed to Checkout
+                </button>
+                <button
+                  onClick={clearCart}
+                  className='clear-cart-btn'
+                >
+                  Clear Cart
                 </button>
               </div>
             </div>

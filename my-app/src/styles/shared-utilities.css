@@ -1,7 +1,111 @@
 /* ===== SHARED UTILITY STYLES ===== */
 
+/* ===== SHARED LAYOUT COMPONENTS ===== */
+/* Note: Specific .product-grid and .page-container styles are defined in individual CSS files */
+
+/* ===== UTILITY CLASSES ===== */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-center {
+  place-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--color-text-secondary);
+}
+
+.error-state {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-error);
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--border-radius-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.empty-state {
+  padding: var(--spacing-4xl);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* Responsive grid adjustments using custom properties */
+@media (max-width: 768px) {
+  .page-container {
+    padding: var(--page-padding-mobile);
+  }
+
+  .product-grid {
+    gap: var(--grid-gap-mobile);
+  }
+}
+
 /* ===== DESIGN TOKENS ===== */
 :root {
+  /* Grid Configuration */
+  --grid-min-item-width: 240px;
+  --grid-gap: 2rem;
+  --grid-gap-mobile: 1.5rem;
+  --page-max-width: 2200px;
+  --page-padding: 15px 40px;
+  --page-padding-mobile: 15px 20px;
+
+  /* Grid Breakpoints */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1200px;
+  --breakpoint-large: 1440px;
+
   /* Colors */
   --color-primary: #764ba2;
   --color-primary-light: rgba(118, 75, 162, 0.3);
@@ -27,7 +131,7 @@
   --color-info: #0c5460;
   --color-info-bg: #d1ecf1;
   --color-info-border: #bee5eb;
-  
+
   /* Spacing */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -37,20 +141,20 @@
   --spacing-2xl: 24px;
   --spacing-3xl: 30px;
   --spacing-4xl: 40px;
-  
+
   /* Border radius */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 10px;
-  
+
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 2px 8px rgba(0, 123, 255, 0.2);
   --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.18);
-  
+
   /* Transitions */
   --transition-fast: all 0.2s ease;
-  
+
   /* Font families */
   --font-brand: 'Freeday', 'Blackcraft', 'Courier New', 'Monaco', 'Menlo', monospace;
 }
@@ -88,26 +192,7 @@
 }
 
 /* ===== SHARED MESSAGE STYLES ===== */
-.message {
-  margin-bottom: var(--spacing-xl);
-  padding: 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* Message types used in CartPage.js */
-.message.success {
-  background-color: var(--color-success-bg);
-  color: var(--color-success);
-  border: 1px solid var(--color-success-border);
-}
-
-.message.error {
-  background-color: var(--color-error-bg);
-  color: var(--color-error);
-  border: 1px solid var(--color-error-border);
-}
+/* Note: Message styles are defined in Message.css to avoid conflicts */
 
 /* ===== SHARED LOADING STYLES ===== */
 .loading-message {

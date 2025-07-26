@@ -1,3 +1,4 @@
 user_id,email,password_hash,first_name,last_name,created_date,last_login,is_active
 1,john@example.com,hashed_password_here,John,Doe,2025-01-15,2025-01-20,true
 2,jane@example.com,hashed_password_here,Jane,Smith,2025-01-16,2025-01-19,true
+3,test123@testemail.com,$2b$12$a5dbO4ZQyUwy/KEFVASJgutt/adfD2sm8kZXSBlL2h2eFpRzkEuju,testFriday,testTest,2025-07-25,2025-07-25 18:47:43,true

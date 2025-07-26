@@ -40,20 +40,10 @@ html {
   overflow-x: hidden;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  pointer-events: none;
-  z-index: -1;
-}
+
 
 /* ===== MAIN APP CONTAINER ===== */
-.fractal-sonics-app-main-container {
+.app-container {
   text-align: center;
   margin: 0;
   padding: 0;
@@ -86,7 +76,7 @@ body::before {
 
 /* ===== CART PAGE BANNER OVERRIDE ===== */
 .cart-page .fractal-sonics-welcome-banner-fullwidth {
-    display: none !important;
+  display: none !important;
 }
 
 .cart-page .fractal-sonics-welcome-banner-title {
@@ -288,7 +278,7 @@ body::before {
 }
 
 /* ===== MAIN NAVIGATION BAR ===== */
-.fractal-sonics-main-navigation-bar {
+.main-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -302,11 +292,11 @@ body::before {
 }
 
 /* ===== CART PAGE NAVIGATION ADJUSTMENTS ===== */
-.cart-page .fractal-sonics-main-navigation-bar {
+.cart-page .main-nav {
   margin-top: 0px;
   padding: 20px;
   position: static;
-  background: 
+  background:
     url('./navbar-texture.png'),
     linear-gradient(135deg, hsl(0, 0%, 0%) 0%, #764ba2 100%);
   background-blend-mode: overlay;
@@ -317,7 +307,7 @@ body::before {
 }
 
 /* Add gradient overlay for cart page navbar */
-.cart-page .fractal-sonics-main-navigation-bar::before {
+.cart-page .main-nav::before {
   content: '';
   position: absolute;
   top: 0;
@@ -332,7 +322,7 @@ body::before {
   z-index: -1;
 }
 
-.fractal-sonics-search-bar-container-left {
+.nav-search {
   flex: 0 0 auto;
   width: 300px;
   height: 36px;
@@ -343,11 +333,11 @@ body::before {
 }
 
 /* ===== CART PAGE LOGO ON LEFT ===== */
-.cart-page .fractal-sonics-search-bar-container-left {
+.cart-page .nav-search {
   justify-content: flex-start;
 }
 
-.fractal-sonics-cart-page-logo {
+.cart-logo {
   font-size: 3rem;
   font-weight: normal;
   font-family: 'Freeday', 'Blackcraft', 'Courier New', 'Monaco', 'Menlo', monospace;
@@ -367,7 +357,7 @@ body::before {
   filter: drop-shadow(0 0 8px rgba(118, 75, 162, 0.7));
 }
 
-.fractal-sonics-cart-page-logo::before {
+.cart-logo::before {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -379,7 +369,7 @@ body::before {
   animation: glitch-navbar-1 2s infinite;
 }
 
-.fractal-sonics-cart-page-logo::after {
+.cart-logo::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -392,90 +382,116 @@ body::before {
 }
 
 @keyframes glitch-navbar {
-  0%, 50% {
+
+  0%,
+  50% {
     transform: translate(0);
   }
+
   52% {
     transform: translate(-0.5px, 0.5px);
   }
+
   56% {
     transform: translate(-0.5px, -0.5px);
   }
+
   60% {
     transform: translate(0.5px, 0.5px);
   }
+
   64% {
     transform: translate(0.5px, -0.5px);
   }
+
   68% {
     transform: translate(-0.5px, 0.5px);
   }
+
   72% {
     transform: translate(0.5px, -0.5px);
   }
-  75%, 100% {
+
+  75%,
+  100% {
     transform: translate(0);
   }
 }
 
 @keyframes glitch-navbar-1 {
-  0%, 50% {
+
+  0%,
+  50% {
     transform: translate(0);
   }
+
   52% {
     transform: translate(-1px, 1px);
   }
+
   56% {
     transform: translate(-1px, -1px);
   }
+
   60% {
     transform: translate(1px, 1px);
   }
+
   64% {
     transform: translate(1px, -1px);
   }
+
   68% {
     transform: translate(-1px, 1px);
   }
+
   72% {
     transform: translate(1px, -1px);
   }
-  75%, 100% {
+
+  75%,
+  100% {
     transform: translate(0);
   }
 }
 
 @keyframes glitch-navbar-2 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0);
   }
+
   20% {
     transform: translate(1px, -1px);
   }
+
   40% {
     transform: translate(1px, 1px);
   }
+
   60% {
     transform: translate(-1px, -1px);
   }
+
   80% {
     transform: translate(-1px, 1px);
   }
 }
 
 /* ===== NAVIGATION TILES CENTER ===== */
-.fractal-sonics-navigation-tiles-center-group {
+.nav-center {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin: 0;
   display: flex;
   gap: 0px;
   align-items: stretch;
   z-index: 1;
+  /* Centered with the entire screen, not just between left/right containers */
 }
 
-.fractal-sonics-navigation-tile-button {
+.nav-button {
   position: relative;
   display: flex;
   align-items: center;
@@ -499,21 +515,21 @@ body::before {
   box-sizing: border-box;
 }
 
-.fractal-sonics-navigation-tile-button:hover {
+.nav-button:hover {
   background-color: var(--color-background-light);
   border-color: var(--color-border-hover);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
 
-.fractal-sonics-navigation-tile-button-active {
+.nav-button-active {
   background-color: #000000cc;
   color: #ffffff;
   border-color: #000000;
 }
 
 /* ===== CART AND ACCOUNT ICONS RIGHT ===== */
-.fractal-sonics-user-icons-container-right {
+.nav-actions {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -525,14 +541,14 @@ body::before {
   position: relative;
 }
 
-.fractal-sonics-cart-icon-link,
-.fractal-sonics-account-icon-link {
+.cart-link,
+.account-link {
   text-decoration: none;
   color: inherit;
 }
 
-.fractal-sonics-cart-icon-button,
-.fractal-sonics-account-icon-button {
+.cart-icon,
+.account-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -548,8 +564,8 @@ body::before {
   cursor: pointer;
 }
 
-.fractal-sonics-cart-icon-button:hover,
-.fractal-sonics-account-icon-button:hover {
+.cart-icon:hover,
+.account-icon:hover {
   background-color: var(--color-background-light);
   border-color: var(--color-border-hover);
   transform: translateY(-1px);
@@ -568,7 +584,7 @@ body::before {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
-.fractal-sonics-cart-item-count-badge {
+.cart-badge {
   position: absolute;
   top: -8px;
   right: -8px;

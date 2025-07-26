@@ -7,7 +7,7 @@ export function SearchProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
-    const handleSearch = (term) => {
+    const search = (term) => {
         setSearchTerm(term);
         if (term.trim()) {
             navigate('/products');
@@ -22,7 +22,7 @@ export function SearchProvider({ children }) {
         <SearchContext.Provider value={{
             searchTerm,
             setSearchTerm,
-            handleSearch,
+            search,
             clearSearch
         }}>
             {children}
